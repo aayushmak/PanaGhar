@@ -1,1 +1,49 @@
 @import "tailwindcss";
+h1 {
+  font-family: "Poppins";
+}
+@media (max-width: 640px) {
+  #icon {
+    width: 190px;
+  }
+}
+body {
+  font-family: "Inter", sans-serif;
+}
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+/* Slide in landing page */
+.slide-in {
+  animation: slideIn 0.5s ease forwards;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 1024px) {
+  #confirm-error {
+    margin-left: 10px;
+  }
+
+  #apple {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* for details-page */
+
+ @keyframes pop-scale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+    }
+    .animate-pop {
+      animation: pop-scale 0.3s ease forwards;
+    }

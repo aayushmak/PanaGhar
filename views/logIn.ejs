@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white font-['Inter']">
+    <div class="h-[95vh] flex">
+      <!-- Left side (Login Form) -->
+      <div
+        class="lg:w-1/2 flex flex-col justify-center lg:px-24 md:px-14 sm:px-8 px-5 w-full"
+      >
+        <a href="landingPage.html"
+          ><img
+            src="assets/green_logo.png"
+            alt=""
+            class="w-[190px] h-[59px] mb-7"
+        /></a>
+        <h1
+          class="text-[38px] font-semibold text-[#283618] mb-1 font-['Inter']"
+        >
+          Login
+        </h1>
+        <p class="text-gray-500 mb-6 text-[16px] font-['Inter']">
+          Login to access your PanaGhar account
+        </p>
+
+        <form id="loginForm-signin" class="space-y-4">
+          <!-- Email -->
+          <div>
+            <label class="block text-[16px] mb-1 font-medium text-[#283618]"
+              >Email</label
+            >
+            <input
+              id="email-signin"
+              type="email"
+              placeholder="Enter your Email"
+              class="w-full border border-gray-500 rounded px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#283618]"
+            />
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label class="block text-[16px] font-medium mb-1 text-[#283618]"
+              >Password</label
+            >
+            <div class="relative">
+              <input
+                id="password-signin"
+                type="password"
+                placeholder="Enter your Password"
+                class="w-full border border-gray-500 rounded px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#2C3812]"
+              />
+              <span
+                onclick="togglePassword()"
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+              >
+                <i
+                  id="eye-icon-signin"
+                  class="fa-solid fa-eye-slash opacity-90 text-black"
+                ></i>
+              </span>
+            </div>
+            <p id="errorMsg-signin" class="text-red-500 text-sm mt-1"></p>
+          </div>
+
+          <!-- Remember Me and Forgot -->
+          <div
+            class="flex justify-between items-center text-[15px] font-[450] text-[#283618]"
+          >
+            <label class="flex items-center mb-7">
+              <input type="checkbox" class="mr-2 text-center" /> Remember me
+            </label>
+            <a href="#" class="text-[#d69f6f] mb-7">Forgot Password ?</a>
+          </div>
+
+          <!-- Login Button -->
+          <button
+            type="submit"
+            class="w-full bg-[#283618] text-white pt-[7px] pb-[7px] pr-[12px] pl-[12px] rounded hover:bg-[#212419] transition"
+          >
+            Login
+          </button>
+
+          <!-- Signup Link -->
+          <p
+            class="text-[16px] font-[400] text-center text-gray-700 font-['Inter']"
+          >
+            Don't have an account?
+            <a
+              href="signUp.html"
+              class="text-[#D9A98F] ml-1 text-[16px] font-[550] font-['Inter']"
+              >Sign up</a
+            >
+          </p>
+          <!-- Or login with -->
+          <div class="flex items-center justify-center pb-6 opacity-50">
+            <!-- Left Line -->
+            <div class="w-[35%] border-t border-[#88965E] rounded-[10px]"></div>
+
+            <!-- Center Text -->
+            <span class="mx-4 text-[15px] font-semibold text-[#88965E]">
+              Or login with
+            </span>
+            <!-- Right Line -->
+            <div class="w-[35%] border-t border-[#88965E] rounded-[14px]"></div>
+          </div>
+
+          <div class="flex justify-between mt-2">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="border border-[#807d7d] w-[140px] h-[50px] pt-[16px] pb-[16px] pr-[24px] pl-[24px] rounded-md flex items-center justify-center"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg"
+                alt="Facebook"
+                class="h-5"
+              />
+            </a>
+
+            <a
+              href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Faccounts.google.com%2F&followup=https%3A%2F%2Faccounts.google.com%2F&ifkv=AdBytiMcp_1hpXb1n7qLQrfJ5PE2r6XgBHEN8Ba4PrkjJ2c8SnCQEdHFwgkeZlfKgCodLAn_qA1B&passive=1209600&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-483315108%3A1749633688120807"
+              target="_blank"
+              class="border border-[#807d7d] w-[140px] h-[50px] pt-[16px] pb-[16px] pr-[24px] pl-[24px] rounded-md flex items-center justify-center"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                alt="Google"
+                class="h-5"
+              />
+            </a>
+
+            <a
+              href="https://account.apple.com/sign-in"
+              target="_blank"
+              class="border border-[#807d7d] w-[140px] h-[50px] pt-[16px] pb-[16px] pr-[24px] pl-[24px] rounded-md flex items-center justify-center"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+                alt="Apple"
+                class="h-5"
+              />
+            </a>
+          </div>
+        </form>
+      </div>
+      <div class="lg:w-1/2 hidden lg:flex justify-center items-center">
+        <img
+          class="lg:w-[520px] h-[520px] mt-[105px] mr-[85px]"
+          src="assets/illustration_login.png"
+          alt="Login Illustration"
+        />
+      </div>
+    </div>
+  </body>
+  <script src="./../public/styles/script.js"></script>
+
+  <!-- JS FILE IS NOT WORKING IN SCRIPT.JS  :(  [Here are those code that are not running in script.js file]-->
+
+  <script>
+    // If the user don't give the email or pw for login/signup error shows
+
+    document
+      .getElementById("loginForm-signin")
+      .addEventListener("submit", function (e) {
+        const email = document.getElementById("email-signin").value.trim();
+        const password = document.getElementById("password-signin").value.trim();
+        const errorMsg = document.getElementById("errorMsg-signin");
+
+        errorMsg.textContent = "";
+
+        if (!email || !password) {
+          e.preventDefault();
+
+          if (!email && !password) {
+            errorMsg.textContent = "Please enter both Email and Password.";
+          } else if (!email) {
+            errorMsg.textContent = "Please enter your Email.";
+          } else if (!password) {
+            errorMsg.textContent = "Please enter your Password.";
+          }
+        } else {
+          e.preventDefault();
+          window.location.href = "landing-page-user.html";
+        }
+      });
+      function togglePassword() {
+  const passwordInput = document.getElementById("password-signin");
+  const icon = document.getElementById("eye-icon-signin");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  } else {
+    passwordInput.type = "password";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  }
+}
+  </script>
+</html>

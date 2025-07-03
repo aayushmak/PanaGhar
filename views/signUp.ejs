@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="./../public/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white font-['Inter']">
+    <div class="min-h-screen flex flex-col lg:flex-row">
+      <!-- right side (Signup Form) -->
+      <div
+        class="w-full lg:w-1/2 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-20 xl:px-28 py-10"
+      >
+        <img src="assets/green_logo.png" alt="" class="w-48 h-auto mb-4" />
+
+        <h1 class="text-3xl sm:text-4xl font-medium text-[#283618] mb-2">
+          Sign up
+        </h1>
+        <p class="text-gray-500 mb-6 text-base">
+          Let's get you all set up so you can access your personal account.
+        </p>
+
+        <form id="signupForm" class="space-y-4">
+          <div class="grid gap-x-6 gap-y-4 grid-cols-1 lg:grid-cols-2">
+            <!-- First Name -->
+            <div>
+              <label
+                for="firstName"
+                class="block text-base mb-1 font-medium text-[#283618]"
+              >
+                First Name <span class="text-red-600">*</span>
+              </label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                placeholder="Enter your First Name"
+                class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
+              />
+            </div>
+
+            <!-- Last Name -->
+            <div>
+              <label
+                for="lastName"
+                class="block text-base mb-1 font-medium text-[#283618]"
+              >
+                Last Name <span class="text-red-600">*</span>
+              </label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                placeholder="Enter your Last Name"
+                class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
+              />
+            </div>
+
+            <!-- Phone Number -->
+            <div>
+              <label
+                for="phone"
+                class="block text-base mb-1 font-medium text-[#283618]"
+              >
+                Phone Number <span class="text-red-600">*</span>
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter your Phone Number"
+                class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label
+                for="email"
+                class="block text-base mb-1 font-medium text-[#283618]"
+              >
+                Email <span class="text-red-600">*</span>
+              </label>
+              <input
+                id="email-signup"
+                name="email"
+                type="email"
+                placeholder="Enter your Email"
+                class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
+              />
+            </div>
+
+            <!-- Password -->
+            <div>
+              <label class="block text-base mb-1 font-medium text-[#283618]">
+                Password <span class="text-red-600">*</span>
+              </label>
+              <div class="relative">
+                <input
+                  id="password-signup"
+                  type="password"
+                  placeholder="Enter your Password"
+                  class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
+                />
+                <span
+                  onclick="togglePassword()"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                >
+                  <i id="eye-icon" class="fa-solid fa-eye-slash text-black"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+              <label class="block text-base mb-1 font-medium text-[#283618]">
+                Confirm Password <span class="text-red-600">*</span>
+              </label>
+              <div class="relative mb-1">
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Enter your Password"
+                  class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
+                />
+                <span
+                  onclick="toggleConfirmPassword()"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                >
+                  <i
+                    id="eye-icon-confirm"
+                    class="fa-solid fa-eye-slash text-black"
+                  ></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <p
+            id="confirm-error"
+            class="text-red-600 text-sm ml-0 lg:ml-[22.8rem] md:ml-[18rem] hidden"
+          >
+            Password does not match
+          </p>
+
+          <!-- Terms -->
+          <div class="flex items-start text-sm font-medium text-[#283618]">
+            <label class="flex items-center mb-4">
+              <input type="checkbox" required class="mr-2" />
+              I agree to all the
+              <span class="text-[#C9996F] font-semibold mx-1">Terms</span> and
+              <span class="text-[#C9996F] font-semibold mx-1"
+                >Privacy policy</span
+              >
+            </label>
+          </div>
+
+          <!-- Button -->
+          <button
+            onclick="validatePassword()"
+            type="submit"
+            class="w-full bg-[#283618] text-white py-2 rounded hover:bg-[#212419] transition"
+          >
+            Create an account
+          </button>
+
+          <!-- Sign In Link -->
+          <p class="text-sm sm:text-base text-center pt-3 pb-3 text-gray-700">
+            Already have an account?
+            <a href="login.html" class="text-[#cf987a] ml-1 font-semibold"
+              >Sign in</a
+            >
+          </p>
+
+          <!-- Divider -->
+          <div
+            class="flex flex-wrap items-center justify-center pb-3 opacity-50"
+          >
+            <div class="w-1/4 sm:w-[35%] border-t border-[#88965E]"></div>
+            <span
+              class="mx-2 sm:mx-4 text-sm font-semibold text-[#88965E] whitespace-nowrap"
+              >Or Sign up with</span
+            >
+            <div class="w-1/4 sm:w-[35%] border-t border-[#88965E]"></div>
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="flex flex-wrap gap-4 ml-[15px] justify-between">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="border border-[#807d7d] w-full sm:w-[140px] h-[50px] rounded-md flex items-center justify-center"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b9/2023_Facebook_icon.svg"
+                alt="Facebook"
+                class="h-5"
+              />
+            </a>
+
+            <a
+              href="https://accounts.google.com/"
+              target="_blank"
+              class="border border-[#807d7d] ml-[30px] w-full sm:w-[140px] h-[50px] rounded-md flex items-center justify-center"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"
+                alt="Google"
+                class="h-5"
+              />
+            </a>
+
+            <a
+              id="apple"
+              href="https://account.apple.com/sign-in"
+              target="_blank"
+              class="border border-[#807d7d] w-full sm:w-[140px] h-[50px] rounded-md flex items-center justify-center"
+            >
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+                alt="Apple"
+                class="h-5"
+              />
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Left side image -->
+      <div class="hidden lg:flex lg:w-1/2 justify-center items-center">
+        <img
+          class="w-[280px] sm:w-[400px] lg:w-[500px] xl:w-[550px] h-auto mt-12 mr-6"
+          src="assets/sign-up-illustration.png"
+          alt="Login Illustration"
+        />
+      </div>
+    </div>
+  </body>
+  <script src="./../public/styles/script.js"></script>
+  <script>
+    //password-matching
+    // If the user don't give the email or pw for signup error shows
+
+    document
+      .getElementById("signupForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault(); // Stop form from submitting
+
+        // Get field values
+        const email = document.getElementById("email-signup").value.trim();
+        const password = document
+          .getElementById("password-signup")
+          .value.trim();
+        const confirmPassword = document
+          .getElementById("confirmPassword")
+          .value.trim();
+        const confirmError = document.getElementById("confirm-error");
+        const confirmInput = document.getElementById("confirmPassword");
+
+        // Reset all error states
+        confirmError.classList.add("hidden");
+        confirmInput.classList.remove("border-red-500");
+
+        // Get required fields
+        const requiredFields = [
+          "firstName",
+          "lastName",
+          "phone",
+          "email-signup",
+          "password-signup",
+          "confirmPassword",
+        ];
+
+        let isValid = true;
+
+        // Check for empty fields
+        requiredFields.forEach((id) => {
+          const input = document.getElementById(id);
+          if (!input.value.trim()) {
+            input.classList.add("border-red-500");
+            isValid = false;
+          } else {
+            input.classList.remove("border-red-500");
+          }
+        });
+
+        // Show general error if fields are empty
+        let generalError = document.getElementById("general-error");
+        if (!generalError) {
+          generalError = document.createElement("p");
+          generalError.id = "general-error";
+          generalError.className = "text-red-600 text-sm mb-2";
+          document.getElementById("signupForm").prepend(generalError);
+        }
+
+        if (!isValid) {
+          generalError.textContent = "Please fill the required information.";
+          return;
+        } else {
+          generalError.textContent = "";
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+          confirmInput.classList.add("border-red-500");
+          confirmError.classList.remove("hidden");
+          return;
+        }
+
+        // If all validations pass, redirect
+        window.location.href = "login.html";
+      });
+
+    // password eye button
+
+    function togglePassword() {
+      const password = document.getElementById("password-signup");
+      const icon = document.getElementById("eye-icon");
+
+      if (password.type === "password") {
+        password.type = "text";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      } else {
+        password.type = "password";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      }
+    }
+    function toggleConfirmPassword() {
+      const input = document.getElementById("confirmPassword");
+      const icon = document.getElementById("eye-icon-confirm");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.replace("fa-eye-slash", "fa-eye");
+      } else {
+        input.type = "password";
+        icon.classList.replace("fa-eye", "fa-eye-slash");
+      }
+    }
+  </script>
+</html>
