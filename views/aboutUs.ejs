@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="./../public/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="min-h-screen flex flex-col bg-[#FEFAE0] text-white font-['Inter']"
+  >
+    <!-- NAV-BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#324A16] p-3 flex flex-wrap justify-between items-center shadow-md">
+      <!-- Logo -->
+      <a href="#" id="brand" class="flex gap-2 items-center flex-1">
+        <img
+          class="w-[140px] sm:w-[160px] md:w-[180px] lg:w-[190px] h-[50px] sm:h-[55px] md:h-[59px] ml-[10px] sm:ml-[30px] lg:ml-[50px] mb-1.5"
+          src="assets/landing_logo.png"
+          alt="Logo"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div id="nav-menu" class="hidden lg:flex gap-8 xl:gap-[75px]">
+        <a
+          href="landingPageUser.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Home</a
+        >
+        <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Browse</a
+        >
+        <a
+          href="myRentals.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >My Rentals</a
+        >
+        <a
+          href="aboutUs.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >About Us</a
+        >
+        <a
+          href="team.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Our Team</a
+        >
+      </div>
+
+      <!-- Icons -->
+      <div class="hidden lg:flex flex-1 justify-end">
+        <button
+          class="flex text-lg font-medium font-serif gap-6 xl:gap-[25px] items-center pr-6 xl:pr-10"
+        >
+          <a href="favouritePage.html"><i class="fa-regular fa-heart hover:text-[#b4cb6e]"></i></a>
+          <a href="billingPage.html"><i class="fa-solid fa-cart-shopping hover:text-[#b4cb6e]"></i></a>
+          <a href="userDashboard.html"><i class="fa-solid fa-user hover:text-[#b4cb6e]"></i></a>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <!-- Mobile Menu Button -->
+      <button class="p-2 lg:hidden" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+
+      <!-- Mobile Menu -->
+      <div
+        id="nav-dialog"
+  class="hidden opacity-0 -translate-y-5 transition-all duration-300 ease-in-out fixed z-50 lg:hidden bg-[#324A16] inset-0 p-3"
+      >
+        <div class="flex justify-between items-center">
+          <a href="#" class="flex gap-2 items-center">
+            <img
+              class=" w-[180px] h-[60px]"
+              src="assets/landing_logo.png"
+              alt="Logo"
+            />
+          </a>
+          <button class="p-2 lg:hidden" onclick="handleMenu()">
+            <i class="fa-solid fa-xmark text-white text-2xl"></i>
+          </button>
+        </div>
+
+        <div class="mt-6 flex flex-col">
+          <a
+            href="/"
+            class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Home</a
+          >
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Browse</a
+          >
+          <a
+            href="myRentals.html"
+            class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >My Rentals</a
+          >
+          <a
+            href="aboutUs.html"
+            class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >About Us</a
+          >
+          <a href="team.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Our Team</a
+          >
+          <div class="mt-[20px] gap-4">
+            <a href="favouritePage.html"><i class="fa-regular fa-heart ml-5 text-[22px]  hover:text-[#b4cb6e]"></i></a>
+          <a href="billingPage.html"><i class="fa-solid fa-cart-shopping ml-5 text-[22px]  hover:text-[#b4cb6e]"></i></a>
+          <a href="userDashboard.html"><i class="fa-solid fa-user ml-5 text-[22px] hover:text-[#b4cb6e]"></i></a>
+          </div>
+        </div>
+        
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow px-6 sm:px-10 md:px-16 lg:px-[3.7rem]">
+      <!-- heading-section -->
+      <section class="pt-10 pb-16">
+        <h1 class="text-2xl sm:text-[30px] font-medium text-[#324A16]">
+          Home / About Us
+        </h1>
+      </section>
+
+      <!-- About Intro -->
+      <div
+        class="bg-[#CAD5A6] rounded-[40px] px-4 sm:px-6 md:px-10 lg:px-0 lg:ml-[10px] mt-[30px] flex justify-center items-center"
+      >
+        <div
+          class="flex flex-col items-center text-center gap-5 w-full max-w-3xl py-10"
+        >
+          <h1 class="text-[#324A16] text-4xl sm:text-5xl font-[700]">
+            About Us
+          </h1>
+          <p
+            class="text-[#BC6C25] text-base sm:text-lg font-[600] leading-relaxed max-w-xl opacity-70"
+          >
+            At Panaghar, we believe books are meant to be read—not stored. We
+            make it easy for readers to access the books they need, while
+            helping owners earn from the books they love.
+          </p>
+          <button class="bg-[#324A16] text-white mt-6 h-12 w-48 rounded-full">
+            Learn More
+          </button>
+        </div>
+      </div>
+
+      <!-- Sections -->
+      <section class="w-full mt-20">
+        <!-- Title -->
+        <div class="flex flex-col items-center">
+          <h1
+            class="text-3xl sm:text-4xl text-center text-[#1B1F13] font-semibold"
+          >
+            Your Reading Companion, Reimagined
+          </h1>
+          <img class="h-10 w-72 mt-6" src="assets/zig-zag.png" alt="icon" />
+        </div>
+
+        <!-- About Sections -->
+        <div class="space-y-28 mt-20">
+          <!-- Section 1 -->
+          <div
+            class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 px-4 md:px-10 lg:px-[160px]"
+          >
+            <div class="lg:w-1/2">
+              <h1 class="text-2xl sm:text-3xl font-semibold text-[#1B1F13]">
+                Why Panaghar Exists
+              </h1>
+              <div class="border-2 w-48 mt-2 border-[#DDA15E] rounded-xl"></div>
+              <p class="text-[#1B1F1399] text-base sm:text-lg font-medium mt-5">
+                We created Panaghar to make reading more accessible, affordable,
+                and community-driven. In a world where books are often
+                underutilized or out of reach for many, we envisioned a shared
+                platform where knowledge flows freely—without the pressure of
+                ownership.
+                <br /><br />
+                “Panaghar” means home—and just like a home, we want every reader
+                to feel welcome, supported, and inspired here.
+              </p>
+            </div>
+            <img class="w-full max-w-sm" src="assets/about-1.png" alt="img-1" />
+          </div>
+
+          <!-- Section 2 -->
+          <div
+            class="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20 px-4 md:px-10 lg:px-[160px]"
+          >
+            <img class="w-full max-w-sm" src="assets/about-2.png" alt="img-2" />
+            <div class="lg:w-1/2 text-right lg:text-right">
+              <h1 class="text-2xl sm:text-3xl font-semibold text-[#1B1F13]">
+                Why We Started
+              </h1>
+              <div
+                class="border-2 w-48 mt-2 border-[#DDA15E] rounded-xl ml-auto"
+              ></div>
+              <p class="text-[#1B1F1399] text-base sm:text-lg font-medium mt-5">
+                Books are often expensive and underused. We saw the need for a
+                smart, community-based solution where people can rent and share
+                books instead of buying them all. Panaghar was created to give
+                everyone access to books—without the high cost—while promoting a
+                culture of reuse and learning.
+              </p>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div
+            class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 px-4 md:px-10 lg:px-[160px]"
+          >
+            <div class="lg:w-1/2">
+              <h1 class="text-2xl sm:text-3xl font-semibold text-[#1B1F13]">
+                How We Work
+              </h1>
+              <div class="border-2 w-48 mt-2 border-[#DDA15E] rounded-xl"></div>
+              <p class="text-[#1B1F1399] text-base sm:text-lg font-medium mt-5">
+                Renting from Panaghar is simple, transparent, and fair for both
+                book owners and readers. To rent a book, users pay a deposit of
+                NPR 500, of which NPR 400 is fully refundable upon safe return
+                of the book. The remaining NPR 100 serves as the rental fee for
+                one week—NPR 60 goes to the book owner as profit, and NPR 40
+                supports Panaghar's platform services. If the renter wishes to
+                keep the book longer, the same weekly charge applies, making the
+                system consistent and rewarding for everyone involved.
+              </p>
+            </div>
+            <img class="w-full max-w-sm" src="assets/about-3.png" alt="img-3" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-[#324A16] text-white px-6 sm:px-10 md:px-16 lg:px-[3.6rem] py-10 mt-20"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div>
+          <img
+            src="assets/landing_logo.png"
+            alt="PanaGhar Logo"
+            class="h-[70px] w-[200px] mb-2"
+          />
+          <p class="text-sm text-white/80 leading-relaxed">
+            "Where Stories are shared.”
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">Quick Links</h3>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="#" class="hover:text-white transition">Home</a></li>
+            <li><a href="#" class="hover:text-white transition">About</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">Contact</h3>
+          <ul class="space-y-2 text-white/80">
+            <li>
+              Email:
+              <a
+                href="mailto:panaghar@gmail.com"
+                class="hover:text-white transition"
+                >panaghar@gmail.com</a
+              >
+            </li>
+            <li>Phone: +977-123456789</li>
+            <li>Location: GCES, Lamachaur</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">We Accept</h3>
+          <div class="flex items-center space-x-4">
+            <img src="assets/Visa.png" alt="Visa" class="h-6 w-auto" />
+            <img
+              src="assets/Mastercard.png"
+              alt="Mastercard"
+              class="h-6 w-auto"
+            />
+            <img
+              src="assets/American Express.png"
+              alt="American Express"
+              class="h-6 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full border-t border-dashed border-white opacity-50 my-10"
+      ></div>
+      <p class="text-center text-sm md:text-base text-white/80">
+        © 2025 <span class="font-semibold text-white">PanaGhar</span>. All
+        rights reserved.
+      </p>
+    </footer>
+
+    <script src="./../public/styles/script.js"></script>
+    <script>
+function handleMenu() {
+    const navDialog = document.getElementById("nav-dialog");
+
+    const isHidden = navDialog.classList.contains("hidden");
+
+    if (isHidden) {
+      navDialog.classList.remove("hidden");
+      setTimeout(() => {
+        navDialog.classList.remove("opacity-0", "-translate-y-5");
+      }, 10);
+    } else {
+      navDialog.classList.add("opacity-0", "-translate-y-5");
+      setTimeout(() => {
+        navDialog.classList.add("hidden");
+      }, 300);
+    }
+  }
+  // to make the hover fixed when clicked
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll("#nav-menu a, #nav-dialog a");
+
+    const currentPath = window.location.pathname.split("/").pop(); // gets about-us.html etc.
+
+    links.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href === currentPath || href === "") {
+        link.classList.add("text-[#b4cb6e]",);
+      } else {
+        link.classList.remove("text-[#b4cb6e]");
+      }
+    });
+  });
+    </script>
+  </body>
+</html>

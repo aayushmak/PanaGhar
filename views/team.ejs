@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="min-h-screen flex flex-col bg-[#FEFAE0] text-white font-['Inter']"
+  >
+    <!-- NAV-BAR -->
+    <nav class="p-3 flex bg-[#324A16] justify-between items-center">
+      <!-- Logo -->
+      <a href="#" id="brand" class="flex gap-2 items-center flex-1">
+        <img
+          class="object-cover w-[197px] h-[59px] ml-[50px] mb-1.5"
+          src="assets/landing_logo.png"
+          alt="Logo"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div id="nav-menu" class="hidden lg:flex gap-[75px]">
+        <a href="landingPageUser.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Home</a
+        >
+        <a href="" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Browse</a
+        >
+        <a href="myRentals.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >My Rentals</a>
+        <a href="aboutUs.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >About Us</a
+        >
+        <a href="team.html" class="font-poppins text-[16px] text-[#b4cb6e]"
+          >Our Team</a
+        >
+      </div>
+
+      <!-- Icons -->
+      <div class="hidden lg:flex flex-1 justify-end">
+        <button
+          class="flex text-lg font-medium font-serif gap-[25px] items-center pr-10"
+        >
+          <i class="fa-regular fa-heart hover:text-[#b4cb6e]"></i>
+          <i class="fa-solid fa-cart-shopping hover:text-[#b4cb6e]"></i>
+          <i class="fa-solid fa-user hover:text-[#b4cb6e]"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="p-2 lg:hidden" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+
+      <!-- Mobile Menu -->
+      <div
+        id="nav-dialog"
+        class="hidden fixed z-10 md:hidden bg-[#324A16] inset-0 p-3"
+      >
+        <div id="nav-bar" class="flex justify-between">
+          <a href="#" id="brand" class="flex gap-2 items-center">
+            <img
+              class="object-cover w-[180px] h-[60px]"
+              src="assets/landing_logo.png"
+              alt="Logo"
+            />
+          </a>
+          <button class="p-2 lg:hidden" onclick="handleMenu()">
+            <i class="fa-solid fa-xmark text-white"></i>
+          </button>
+        </div>
+        <div class="mt-6 flex flex-col">
+          <a href="landingPageUser.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3">Home</a>
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Browse</a
+          >
+          <a href="myRentals.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >My Rentals</a
+          >
+          <a href="aboutUs.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >About Us</a
+          >
+          <a href="team.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Our Team</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow px-[3.7rem]">
+      <!-- heading-section -->
+      <section class="pt-[2.95rem] pb-[4rem]">
+        <h1 class="text-[30px] font-medium text-[#324A16]">Home / Our Team</h1>
+      </section>
+    </main>
+    <section class="h-[800px] w-full bg-[#CAD5A6]">
+      <!-- title -->
+      <div class="flex flex-col items-center">
+        <h1
+          class="text-[45px] font-semibold text-center text-[#1B1F13] mt-[20px] font-['Inter']"
+        >
+          Meet my Team!
+        </h1>
+        <img
+          class="h-[40px] w-[280px] mt-[15px]"
+          src="assets/zig-zag.png"
+          alt="icon"
+        />
+      </div>
+
+      <!-- team-members -->
+      <div class="flex justify-evenly mt-[90px] text-center">
+        <!-- Member 1 -->
+        <div class="flex flex-col items-center">
+          <img
+            class="h-[350px] w-[350px] rounded-lg transition-transform duration-300 hover:scale-105"
+            src="assets/leader.png"
+            alt="Aayushma Kafle"
+          />
+          <span class="text-[#1B1F13] text-[28px] font-[600] mt-4"
+            >Aayushma Kafle</span
+          >
+          <div class="text-[#BC6C25] text-[18px] font-[600] leading-[28px]">
+            <p>Back-End Development</p>
+            <p>AI Integration</p>
+            <p>Documentation</p>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="flex flex-col items-center">
+          <img
+            class="h-[350px] w-[350px] rounded-lg transition-transform duration-300 hover:scale-105 -rotate-[5deg] "
+            src="assets/member-1.png"
+            alt="Achhyut Baral"
+          />
+          <span class="text-[#1B1F13] text-[28px] font-[600] mt-4"
+            >Achhyut Baral</span
+          >
+          <div class="text-[#BC6C25] text-[18px] font-[600] leading-[28px]">
+            <p>Front-End Development</p>
+            <p>Documentation</p>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="flex flex-col items-center">
+          <img
+            class="h-[350px] w-[350px] rounded-lg transition-transform duration-300 hover:scale-105 "
+            src="assets/member-2.png"
+            alt="Jasmine Timilsina"
+          />
+          <span class="text-[#1B1F13] text-[28px] font-[600] mt-4"
+            >Jasmine Timilsina</span
+          >
+          <div class="text-[#BC6C25] text-[18px] font-[600] leading-[28px]">
+            <p>UI Designing</p>
+            <p>Prototyping</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="flex flex-col items-center mt-10 px-[3.8rem] py-6">
+      <div
+        class="w-full border border-dashed border-[#324A16] opacity-50"
+      ></div>
+      <span
+        class="text-[#324A16] font-normal text-base md:text-lg mt-4 text-center"
+      >
+        © 2025 <span class="font-semibold">PanaGhar</span>. All rights reserved.
+      </span>
+    </footer>
+
+    <script src="/styles/script.js"></script>
+  </body>
+</html>

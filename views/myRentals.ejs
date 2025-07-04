@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./../public/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="min-h-[120vh] flex flex-col bg-[#FEFAE0] font-['Inter'] text-white"
+  >
+    <!-- NAVBAR -->
+    <nav class="p-3 flex bg-[#324A16] justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="flex items-center flex-1">
+        <img
+          src="assets/landing_logo.png"
+          alt="PanaGhar Logo"
+          class="w-[197px] h-[59px] ml-[50px] mb-1.5 object-cover"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex gap-[75px]">
+        <a href="landingPageUser.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Home</a
+        >
+        <a href="/" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Browse</a
+        >
+        <a href="/rental" class="font-poppins text-[16px] text-[#b4cb6e]">
+         My Rentals
+        </a>
+        <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >About Us</a
+        >
+        <a href="/team" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Our Team</a
+        >
+      </div>
+
+      <!-- Desktop Icons -->
+      <div
+        class="hidden lg:flex flex-1 justify-end pr-10 gap-[25px] text-lg font-serif"
+      >
+        <i class="fa-regular fa-heart hover:text-[#b4cb6e] cursor-pointer"></i>
+        <i
+          class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"
+        ></i>
+        <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="p-2 lg:hidden" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white text-xl"></i>
+      </button>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="nav-dialog"
+        class="hidden fixed z-10 inset-0 p-3 bg-[#324A16] md:hidden"
+      >
+        <div class="flex justify-between items-center">
+          <img
+            src="assets/landing_logo.png"
+            alt="PanaGhar Logo"
+            class="w-[180px] h-[60px]"
+          />
+          <button onclick="handleMenu()" class="text-white text-2xl">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="mt-6 flex flex-col space-y-4">
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] p-2">Home</a>
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] p-2">Browse</a>
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] p-2"
+            >My Rentals</a
+          >
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] p-2"
+            >About Us</a
+          >
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] p-2">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow px-[3.7rem]">
+      <!-- Breadcrumb -->
+      <section class="pt-[2.95rem] pb-[5rem]">
+        <h1 class="text-[22px] font-medium text-[#324A16]">
+          Home / My Rentals
+        </h1>
+      </section>
+      <!-- HEADER -->
+      <section
+        class="text-[#1B1F13B2] text-[16px] mb-6 flex justify-between items-center px-6 max-w-[1250px] mx-auto"
+      >
+        <span class="w-[50%]">Purchase</span>
+        <div class="flex justify-evenly w-[50%] text-center">
+          <span class="w-[33.33%]">Amount</span>
+          <span class="w-[33.33%]">Rented Date</span>
+          <span class="w-[33.33%]">Deadline</span>
+        </div>
+      </section>
+
+      <!-- CART SECTION -->
+      <section class="min-h-[730px] bg-opacity-40 ">
+        <div class="flex justify-center">
+          <div class="flex flex-col w-full max-w-[1250px]">
+            <!-- ITEM 1 -->
+            <div
+              class="flex justify-between items-center bg-[#fafafa] rounded-[6px] border border-[#324A16] h-[130px] px-6 mb-[20px] transition-transform ease-in-out duration-[400ms] hover:scale-[1.01] hover:shadow-[3px_5px_5px_rgba(1,1,1,0.4)]"
+            >
+              <!-- Left -->
+              <div class="flex items-center w-[50%]">
+                <img
+                  src="assets/your-cart-1.png"
+                  alt="Mystery of the Lost Island"
+                  class="h-[96px] w-[67px] mr-4"
+                />
+                <div class="flex flex-col justify-center space-y-1">
+                  <span class="text-black font-medium"
+                    >Mystery of the Lost Island</span
+                  >
+                  <span class="text-[#71717A] font-medium">Jane Smith</span>
+                  <div class="text-[#3F3F46]">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <span class="font-semibold">3.5</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Right -->
+              <div
+                class="flex justify-evenly items-center w-[50%] text-[16px] text-[#1B1F13] font-medium text-center "
+              >
+                <div class="w-[33.33%]">Rs 300</div>
+                <div
+                  class="border-[0.5px] border-[#1B1F1380] h-[65px] mr-1"
+                ></div>
+                <div class="w-[33.33%]">7th June 2025</div>
+                <div
+                  class="border-[0.5px] border-[#1B1F1380] h-[65px] mr-1"
+                ></div>
+
+                <div class="w-[33.33%]">6th July 2025</div>
+              </div>
+            </div>
+
+            <!-- ITEM 2 -->
+            <div
+              class="flex justify-between items-center bg-[#fafafa] rounded-[6px] border border-[#324A16] h-[130px] px-6 mb-[20px] transition-transform ease-in-out duration-[400ms] hover:scale-[1.01] hover:shadow-[3px_5px_5px_rgba(1,1,1,0.4)]"
+            >
+              <!-- Left -->
+              <div class="flex items-center w-[50%]">
+                <img
+                  src="assets/your-cart-2.png"
+                  alt="Cooking Made Easy"
+                  class="h-[96px] w-[67px] mr-4"
+                />
+                <div class="flex flex-col justify-center space-y-1">
+                  <span class="text-black font-medium">Cooking Made Easy</span>
+                  <span class="text-[#71717A] font-medium">Emily Clark</span>
+                  <div class="text-[#3F3F46]">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <span class="font-semibold">4.5</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Right -->
+              <div
+                class="flex justify-evenly items-center w-[50%] text-[16px] text-[#1B1F13] font-medium text-center"
+              >
+                <div class="w-[33.33%]">Rs 270</div>
+                <div
+                  class="border-[0.5px] border-[#1B1F1380] h-[65px] mr-1"
+                ></div>
+
+                <div class="w-[33.33%]">23rd July 2025</div>
+                <div
+                  class="border-[0.5px] border-[#1B1F1380] h-[65px] mr-1"
+                ></div>
+
+                <div class="w-[33.33%]">4th Aug 2025</div>
+              </div>
+            </div>
+
+            <!-- ITEM 3 -->
+            <div
+              class="flex justify-between items-center bg-[#fafafa] rounded-[6px] border border-[#324A16] h-[130px] px-6 transition-transform ease-in-out duration-[400ms] hover:scale-[1.01] hover:shadow-[2px_2px_2px_rgba(1,1,1,0.4)]"
+            >
+              <!-- Left -->
+              <div class="flex items-center w-[50%]">
+                <img
+                  src="assets/your-cart-1.png"
+                  alt="Mystery of the Lost Island"
+                  class="h-[96px] w-[67px] mr-4"
+                />
+                <div class="flex flex-col justify-center space-y-1">
+                  <span class="text-black font-medium"
+                    >Mystery of the Lost Island</span
+                  >
+                  <span class="text-[#71717A] font-medium">Jane Smith</span>
+                  <div class="text-[#3F3F46]">
+                    <i class="fa-solid fa-star text-yellow-500"></i>
+                    <span class="font-semibold">3.5</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Right -->
+              <div
+                class="flex justify-evenly items-center w-[50%] text-[16px] font-medium text-center"
+              >
+                <div class="w-[33.33%] text-[#1B1F13]">Rs 300</div>
+                <div
+                  class="border-[0.5px] border-[#1B1F1380] h-[65px] mr-1"
+                ></div>
+
+                <div class="w-[33.33%] text-[#1B1F13]">23rd Feb 2025</div>
+                <div
+                  class="border-[0.5px] border-[#1B1F1380] h-[65px] mr-1"
+                ></div>
+
+                <div class="w-[33.33%] text-[#FF4B4A]">
+                  <div class="mt-5 leading-none">4th July 2025</div>
+                  <span class="text-[12px] text-[#1B1F1366]"
+                    >Past the Deadline</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#324A16] text-white px-[3.6rem] py-10 mt-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <!-- Logo & Tagline -->
+        <div>
+          <img
+            src="assets/landing_logo.png"
+            alt="PanaGhar Logo"
+            class="h-[70px] w-[200px] mb-2"
+          />
+          <p class="text-sm text-white/80 leading-relaxed">
+            "Where Stories are shared.”
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">Quick Links</h3>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="#" class="hover:text-white transition">Home</a></li>
+            <li><a href="#" class="hover:text-white transition">About</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">Contact</h3>
+          <ul class="space-y-2 text-white/80">
+            <li>
+              Email:
+              <a
+                href="mailto:panaghar@gmail.com"
+                class="hover:text-white transition"
+                >panaghar@gmail.com</a
+              >
+            </li>
+            <li>Phone: +977-123456789</li>
+            <li>Location: GCES,Lamachaur</li>
+          </ul>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="pl-[3rem]">
+          <h3 class="font-semibold text-lg mb-3 pt-1">We Accept</h3>
+          <div class="flex items-center space-x-4">
+            <img src="assets/Visa.png" alt="Visa" class="h-6 w-auto" />
+            <img
+              src="assets/Mastercard.png"
+              alt="Mastercard"
+              class="h-6 w-auto"
+            />
+            <img
+              src="assets/American Express.png"
+              alt="American Express"
+              class="h-6 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="w-full border-t border-dashed border-white opacity-50 my-10"
+      ></div>
+
+      <p class="text-center text-sm md:text-base text-white/80">
+        © 2025 <span class="font-semibold text-white">PanaGhar</span>. All
+        rights reserved.
+      </p>
+    </footer>
+
+    <script src="./../public/styles/script.js"></script>
+  </body>
+</html>

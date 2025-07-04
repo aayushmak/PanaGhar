@@ -36,7 +36,7 @@
           Let's get you all set up so you can access your personal account.
         </p>
 
-        <form id="signupForm" class="space-y-4">
+        <form id="signupForm" action="/signup" method="post" class="space-y-4">
           <div class="grid gap-x-6 gap-y-4 grid-cols-1 lg:grid-cols-2">
             <!-- First Name -->
             <div>
@@ -48,7 +48,7 @@
               </label>
               <input
                 id="firstName"
-                name="firstName"
+                name="firstname"
                 type="text"
                 placeholder="Enter your First Name"
                 class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
@@ -65,7 +65,7 @@
               </label>
               <input
                 id="lastName"
-                name="lastName"
+                name="lastname"
                 type="text"
                 placeholder="Enter your Last Name"
                 class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
@@ -82,7 +82,7 @@
               </label>
               <input
                 id="phone"
-                name="phone"
+                name="phoneno"
                 type="tel"
                 inputmode="numeric"
                 pattern="[0-9]*"
@@ -116,6 +116,7 @@
               <div class="relative">
                 <input
                   id="password-signup"
+                  name="password"
                   type="password"
                   placeholder="Enter your Password"
                   class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
@@ -137,6 +138,7 @@
               <div class="relative mb-1">
                 <input
                   id="confirmPassword"
+                  name="confirmpassword"
                   type="password"
                   placeholder="Enter your Password"
                   class="w-full border border-gray-500 rounded px-4 py-2 focus:outline-none focus:ring-1 focus:ring-[#283618]"
@@ -256,15 +258,10 @@
   </body>
   <script src="./../public/styles/script.js"></script>
   <script>
-    //password-matching
-    // If the user don't give the email or pw for signup error shows
-
     document
       .getElementById("signupForm")
       .addEventListener("submit", function (e) {
-        e.preventDefault(); // Stop form from submitting
-
-        // Get field values
+        // Get values
         const email = document.getElementById("email-signup").value.trim();
         const password = document
           .getElementById("password-signup")
@@ -275,11 +272,11 @@
         const confirmError = document.getElementById("confirm-error");
         const confirmInput = document.getElementById("confirmPassword");
 
-        // Reset all error states
+        // Reset error styles
         confirmError.classList.add("hidden");
         confirmInput.classList.remove("border-red-500");
 
-        // Get required fields
+        // Check required fields
         const requiredFields = [
           "firstName",
           "lastName",
@@ -291,7 +288,6 @@
 
         let isValid = true;
 
-        // Check for empty fields
         requiredFields.forEach((id) => {
           const input = document.getElementById(id);
           if (!input.value.trim()) {
@@ -312,25 +308,23 @@
         }
 
         if (!isValid) {
-          generalError.textContent = "Please fill the required information.";
+          e.preventDefault();
+          generalError.textContent = "Please fill all required fields.";
           return;
         } else {
           generalError.textContent = "";
         }
 
-        // Check if passwords match
+        // Check password match
         if (password !== confirmPassword) {
+          e.preventDefault(); // prevent submission only on mismatch
           confirmInput.classList.add("border-red-500");
           confirmError.classList.remove("hidden");
           return;
         }
-
-        // If all validations pass, redirect
-        window.location.href = "login.html";
       });
 
-    // password eye button
-
+    // Toggle password visibility
     function togglePassword() {
       const password = document.getElementById("password-signup");
       const icon = document.getElementById("eye-icon");
@@ -345,9 +339,11 @@
         icon.classList.add("fa-eye-slash");
       }
     }
+
     function toggleConfirmPassword() {
       const input = document.getElementById("confirmPassword");
       const icon = document.getElementById("eye-icon-confirm");
+
       if (input.type === "password") {
         input.type = "text";
         icon.classList.replace("fa-eye-slash", "fa-eye");

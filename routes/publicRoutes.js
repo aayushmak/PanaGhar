@@ -12,6 +12,15 @@ router.get("/", (req, res) => {
   res.render("landingPage"); // Your EJS view for the landing page
 });
 
+// My Rental Page
+router.get("/login", (req, res) => {
+  if (req.session.user) {
+    return res.redirect("/rental");
+  }
+
+  res.render("logIn"); 
+});
+
 // About Us Page
 router.get("/about", (req, res) => {
   res.render("aboutUs");
@@ -23,7 +32,7 @@ router.get("/team", (req, res) => {
 });
 
 // Browse Books Page (public, no login required)
-router.get("/books", async (req, res) => {
+router.get("/browse", async (req, res) => {
   // Optional: fetch books from DB if ready
   // const books = await Book.find({ availability: "available" });
   res.render("listingPage", {
