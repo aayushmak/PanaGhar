@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+
+    <!-- Tailwind & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./../public/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="min-h-[160vh] flex flex-col bg-[#FEFAE0] font-['Inter'] text-white"
+  >
+    <!-- NAVBAR -->
+    <nav class="p-3 flex bg-[#324A16] justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="flex items-center flex-1">
+        <img
+          src="assets/landing_logo.png"
+          alt="PanaGhar Logo"
+          class="w-[197px] h-[59px] ml-[50px] mb-1.5 object-cover"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex gap-[75px]">
+        <a
+          href="landingPage.html"
+          class="font-poppins text-[16px] text-[#b4cb6e]"
+          >Home</a
+        >
+        <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Browse</a
+        >
+        <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]">
+          My Rentals
+        </a>
+        <a
+          href="aboutUs.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >About Us</a
+        >
+        <a
+          href="team.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Our Team</a
+        >
+      </div>
+
+      <!-- Desktop Icons -->
+      <div
+        class="hidden lg:flex flex-1 justify-end pr-10 gap-[25px] text-lg font-serif"
+      >
+        <a href="#"
+          ><i
+            class="fa-regular fa-heart hover:text-[#b4cb6e] cursor-pointer"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"
+          ></i
+        ></a>
+        <a href="#"
+          ><i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i
+        ></a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="p-2 lg:hidden" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white text-xl"></i>
+      </button>
+
+      <!-- Mobile Navigation -->
+      <div
+        id="nav-dialog"
+        class="hidden opacity-0 -translate-y-5 fixed z-10 inset-0 p-3 bg-[#324A16] lg:hidden transition-all duration-300"
+      >
+        <div class="flex justify-between items-center">
+          <img
+            src="assets/landing_logo.png"
+            alt="PanaGhar Logo"
+            class="w-[180px] h-[60px]"
+          />
+          <button onclick="handleMenu()" class="text-white text-2xl">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="mt-6 flex flex-col space-y-4">
+          <a
+            href="landingPage.html"
+            class="font-poppins text-[16px] text-[#b4cb6e]"
+            >Home</a
+          >
+          <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+            >Browse</a
+          >
+          <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]">
+            My Rentals
+          </a>
+          <a
+            href="aboutUs.html"
+            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+            >About Us</a
+          >
+          <a
+            href="team.html"
+            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+            >Our Team</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow px-[4rem]">
+      <div
+        class="relative h-[670px] w-[1390px] mt-[70px] rounded-md overflow-hidden"
+      >
+        <!-- Image -->
+        <img src="assets/landing-1.png" alt="library" class="w-full h-full" />
+
+        <!-- Centered Text -->
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center text-center px-6"
+        >
+          <h1 class="text-[55px] font-bold text-white drop-shadow-md">
+            Read More. Share More.
+          </h1>
+          <h1 class="text-[45px] font-bold text-[#DDA15E] drop-shadow-md">
+            Waste Less
+          </h1>
+          <span class="text-white text-[16px] mt-4 max-w-xl drop-shadow-sm">
+            Panaghar connects readers through smart,<br />
+            sustainable book sharing—<br />
+            personalized just for you.
+          </span>
+        </div>
+
+        <!-- Bottom-Centered Clickable Button -->
+        <a
+          href="#"
+          class="absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-[#324A16] text-white h-[60px] w-[200px] flex items-center justify-center rounded-[40px] shadow-lg hover:bg-[#3d5d1c] transition text-lg font-medium"
+        >
+          Browse Books
+        </a>
+      </div>
+      <!-- Search Bar Centered Below Button -->
+      <div class="absolute -bottom-7 left-1/2 transform -translate-x-1/2">
+        <div
+          class="flex items-center rounded-full border bg-white px-4 py-2 shadow-md w-[780px]"
+        >
+          <!-- Menu Icon -->
+          <div class="text-green-900 mr-4">
+            <i class="fa-solid fa-bars text-black text-xl"></i>
+          </div>
+
+          <!-- Search Input -->
+          <input
+            type="text"
+            placeholder="Search Books"
+            class="flex-grow bg-transparent text-gray-600 placeholder-gray-400 outline-none"
+          />
+
+          <!-- Search Button -->
+          <button
+            class="ml-4 bg-green-900 rounded-full w-10 h-10 flex items-center justify-center"
+          >
+            <i class="fa-solid fa-magnifying-glass text-white text-base"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Popular-Search -->
+      <!-- <section class="flex justify-center gap-7 mt-[70px]">
+        <div>
+          <span class="text-[#283618] font-medium text-[18px]"
+            >Popular Search</span
+          >
+        </div>
+        <div>
+          <a
+            class="text-[#283618] font-medium text-[18px] bg-white py-[8px] px-[40px] border border-[#324A16] hover:border-[1.9px] rounded-2xl"
+            href=""
+            >Book 1</a
+          >
+          >
+        </div>
+        <div>
+          <a 
+            class="text-[#283618] font-medium text-[18px] bg-white py-[8px] px-[40px] border border-[#324A16] hover:border-[1.9px] rounded-2xl"
+            href=""
+            >Book 2</a
+          >
+          >
+        </div>
+        <div>
+          <a
+            class="text-[#283618] font-medium text-[18px] bg-white py-[8px] px-[40px] border border-[#324A16] hover:border-[1.9px] rounded-2xl"
+            href=""
+            >Book 3</a
+          >
+          >
+        </div>
+        <div>
+          <a
+            class="text-[#283618] font-medium text-[18px] bg-white py-[8px] px-[40px] border border-[#324A16] hover:border-[1.9px] rounded-2xl"
+            href=""
+            >Book 4</a
+          >
+          >
+        </div>
+      </section> -->
+    </main>
+    <section>
+      <div
+        class="relative text-center bg-[#88965E] h-[640px] w-full mt-[60px] px-[19px]"
+      >
+        <!-- Title -->
+        <h1 class="text-[#1B1F13] text-[45px] font-bold pt-[60px]">
+          Explore our Top Categories
+        </h1>
+
+        <!-- Left Arrow -->
+        <div class="absolute left-[19px] mt-[180px]">
+          <div
+            id="leftArrow"
+            class="flex items-center justify-center bg-white rounded-full h-[50px] w-[50px] shadow-md cursor-pointer"
+          >
+            <i class="fa-solid fa-arrow-left text-[20px] text-black"></i>
+          </div>
+        </div>
+
+        <!-- Right Arrow -->
+        <div class="absolute right-[19px] mt-[180px]">
+          <div
+            id="rightArrow"
+            class="flex items-center justify-center bg-[#324A16] rounded-full h-[50px] w-[50px] shadow-md cursor-pointer"
+          >
+            <i class="fa-solid fa-arrow-right text-[20px] text-white"></i>
+          </div>
+        </div>
+
+        <!-- Image Centered -->
+        <div id="carousel" class="flex justify-evenly mt-[100px] px-[20px]">
+          <!-- 7 cards total -->
+
+          <!-- book-1 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-1.png"
+              alt="book1"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >Fiction Books</span
+            >
+          </div>
+          <!-- book-2 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-2.png"
+              alt="book2"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >Non Fiction Books</span
+            >
+          </div>
+          <!-- book-3 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-3.png"
+              alt="book3"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >Slice of Life Books</span
+            >
+          </div>
+          <!-- book-4 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-2.png"
+              alt="book4"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >History</span
+            >
+          </div>
+          <!-- book-5 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-1.png"
+              alt="book5"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >Biography</span
+            >
+          </div>
+          <!-- book-6 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-3.png"
+              alt="book6"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >Fantasy</span
+            >
+          </div>
+          <!-- book-7 -->
+          <div class="flex flex-col items-center">
+            <img
+              class="h-[190px] w-[340px]"
+              src="assets/landingbook-2.png"
+              alt="book7"
+            />
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
+              >Adventure</span
+            >
+          </div>
+        </div>
+
+        <!-- Browse Button
+        <a
+          href="#"
+          class="absolute left-1/2 mt-[80px] transform -translate-x-1/2 bg-[#324A16] text-white text-[16px] font-[400] h-[60px] w-[200px] flex items-center justify-center rounded-[10px] shadow-lg hover:bg-[#3d5d1c] transition"
+        >
+          Browse Books <i class="ml-[10px] fa-solid fa-arrow-right"></i>
+        </a> -->
+      </div>
+    </section>
+
+    <section>
+      <div class="h-[200px] ml-[99px]">
+        <h1 class="text-black text-[45px] font-[700] mt-[60px] mb-[20px]">
+          Top Books
+        </h1>
+        <span class="text-[#BC6C25] text-[18px]"
+          >Best Selling Books This Week!</span
+        >
+      </div>
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-[120px] mb-[60px]"
+      >
+        <div
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
+          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
+        >
+          <img
+            class="h-[260px] w-[190px] object-cover"
+            src="assets/fav-1.png"
+            alt="Simple way of piece life book cover"
+          />
+          <span class="text-black text-[16px] font-medium"
+            >Simple way of piece life</span
+          >
+          <span class="text-[#BC6C25] text-[14px]">Armor Ramsey</span>
+          <span class="text-[#324A16] font-semibold">Rs 250</span>
+        </div>
+        <div
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
+          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
+        >
+          <img
+            class="h-[260px] w-[190px] object-cover"
+            src="assets/fav-2.png"
+            alt="Simple way of piece life book cover"
+          />
+          <span class="text-black text-[16px] font-medium"
+            >Great travel at desert</span
+          >
+          <span class="text-[#BC6C25] text-[14px]">Sanchit Howdy</span>
+          <span class="text-[#324A16] font-semibold">Rs 430</span>
+        </div>
+        <div
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
+          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
+        >
+          <img
+            class="h-[260px] w-[190px] object-cover"
+            src="assets/fav-3.png"
+            alt="Simple way of piece life book cover"
+          />
+          <span class="text-black text-[16px] font-medium"
+            >The lady beauty Scarlett</span
+          >
+          <span class="text-[#BC6C25] text-[14px]">Arthur Doyle</span>
+          <span class="text-[#324A16] font-semibold">Rs 350</span>
+        </div>
+        <div
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
+          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
+        >
+          <img
+            class="h-[260px] w-[190px] object-cover"
+            src="assets/fav-2.png"
+            alt="Simple way of piece life book cover"
+          />
+          <span class="text-black text-[16px] font-medium"
+            >Simple way of piece life</span
+          >
+          <span class="text-[#BC6C25] text-[14px]">Armor Ramsey</span>
+          <span class="text-[#324A16] font-semibold">Rs 250</span>
+        </div>
+      </div>
+      <!-- <div class="flex justify-center">
+        <a
+          class="bg-[#324A16] p-4 rounded-3xl px-[30px] hover:bg-[#264a16]"
+          href="#"
+          >View All</a
+        >
+      </div> -->
+    </section>
+    <section class="mt-[60px] mb-[30px]">
+      <div
+        class="ml-[120px] bg-[#88965E] h-[660px] w-[1250px] rounded-2xl flex justify-between overflow-hidden"
+      >
+        <!-- Left Content -->
+        <div>
+          <h1 class="text-black text-[45px] font-bold ml-[65px] mt-[7.8rem]">
+            All books are <span class="text-[#BC6C25]">50%</span> off now!
+            <br />
+            Don't miss such a deal!
+          </h1>
+          <span class="text-[18px] ml-[80px] mt-[40px] block max-w-[500px]">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu
+            feugiat amet, libero ipsum enim pharetra hac.
+          </span>
+          <div class="flex justify-start">
+            <a
+              class="bg-[#324A16] p-4 rounded-3xl px-[30px] mt-[70px] ml-[70px] hover:bg-[#264a16]"
+              href="signUp.html"
+              >Sign up Now</a
+            >
+          </div>
+        </div>
+
+        <!-- Right Image (inside the same flex row) -->
+        <div class="pr-[40px] mt-[120px]">
+          <img
+            src="assets/landing-3.png"
+            alt="Offer Book"
+            class="h-[400px] w-[550px] object-contain"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#324A16] text-white px-[3.6rem] py-10 mt-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <!-- Logo & Tagline -->
+        <div>
+          <img
+            src="assets/landing_logo.png"
+            alt="PanaGhar Logo"
+            class="h-[70px] w-[200px] mb-2"
+          />
+          <p class="text-sm text-white/80 leading-relaxed">
+            "Where Stories are shared.”
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">Quick Links</h3>
+          <ul class="space-y-2 text-white/80">
+            <li><a href="#" class="hover:text-white transition">Home</a></li>
+            <li><a href="#" class="hover:text-white transition">About</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="font-semibold text-lg mb-3 pt-1">Contact</h3>
+          <ul class="space-y-2 text-white/80">
+            <li>
+              Email:
+              <a
+                href="mailto:panaghar@gmail.com"
+                class="hover:text-white transition"
+                >panaghar@gmail.com</a
+              >
+            </li>
+            <li>Phone: +977-123456789</li>
+            <li>Location: GCES,Lamachaur</li>
+          </ul>
+        </div>
+
+        <!-- Payment Methods -->
+        <div class="pl-[3rem]">
+          <h3 class="font-semibold text-lg mb-3 pt-1">We Accept</h3>
+          <div class="flex items-center space-x-4">
+            <img src="assets/Visa.png" alt="Visa" class="h-6 w-auto" />
+            <img
+              src="assets/Mastercard.png"
+              alt="Mastercard"
+              class="h-6 w-auto"
+            />
+            <img
+              src="assets/American Express.png"
+              alt="American Express"
+              class="h-6 w-auto"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="w-full border-t border-dashed border-white opacity-50 my-10"
+      ></div>
+
+      <p class="text-center text-sm md:text-base text-white/80">
+        © 2025 <span class="font-semibold text-white">PanaGhar</span>. All
+        rights reserved.
+      </p>
+    </footer>
+    <script src="./../public/styles/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.getElementById("carousel");
+        const cards = carousel?.children;
+        const total = cards?.length;
+        let start = 0;
+
+        function updateVisibility() {
+          for (let i = 0; i < total; i++) {
+            cards[i].classList.add("hidden");
+            cards[i].classList.remove("slide-in");
+          }
+          for (let i = 0; i < 3; i++) {
+            const idx = (start + i) % total;
+            cards[idx].classList.remove("hidden");
+            cards[idx].classList.add("slide-in");
+          }
+        }
+
+        const leftArrow = document.getElementById("leftArrow");
+        const rightArrow = document.getElementById("rightArrow");
+
+        if (leftArrow && rightArrow && carousel) {
+          leftArrow.addEventListener("click", () => {
+            start = (start - 1 + total) % total;
+            updateVisibility();
+          });
+
+          rightArrow.addEventListener("click", () => {
+            start = (start + 1) % total;
+            updateVisibility();
+          });
+
+          updateVisibility(); // initial display
+        } else {
+          console.error("Carousel or arrow buttons not found in DOM.");
+        }
+      });
+      //nav bar
+      function handleMenu() {
+        const navDialog = document.getElementById("nav-dialog");
+
+        const isHidden = navDialog.classList.contains("hidden");
+
+        if (isHidden) {
+          navDialog.classList.remove("hidden");
+          setTimeout(() => {
+            navDialog.classList.remove("opacity-0", "-translate-y-5");
+          }, 10);
+        } else {
+          navDialog.classList.add("opacity-0", "-translate-y-5");
+          setTimeout(() => {
+            navDialog.classList.add("hidden");
+          }, 300);
+        }
+      }
+      // to make the hover fixed when clicked
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll("#nav-menu a, #nav-dialog a");
+
+        const currentPath = window.location.pathname.split("/").pop(); // gets about-us.html etc.
+
+        links.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href === currentPath || href === "") {
+            link.classList.add("text-[#b4cb6e]");
+          } else {
+            link.classList.remove("text-[#b4cb6e]");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
