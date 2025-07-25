@@ -16,8 +16,11 @@
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "hbs": "^4.2.0",
-    "mongoose": "^8.16.1",
-    "nodemon": "^3.1.10",
+    "mongoose": "^8.16.5",
     "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.1",
+    "nodemon": "^3.1.10"
   }
 }
