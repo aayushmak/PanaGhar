@@ -14,7 +14,7 @@ exports.registerUser = async (req, res) => {
     const user = new User({ firstname, lastname, email, phoneno, password, confirmpassword });
     await user.save();
     req.session.user = user;
-    res.redirect("/landingPageUser");
+    res.redirect("/login");
   } catch (err) {
     console.error("Signup error:", err);
     res.redirect("/signup");
