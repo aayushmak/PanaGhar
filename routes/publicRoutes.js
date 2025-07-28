@@ -41,7 +41,17 @@ router.get("/browse", async (req, res) => {
 });
 
 router.get("/dashboard",(req, res)=> {
-  res.render("userDashbaord")
+  res.render("userDashboard")
 })
+
+router.get("/billing", (res, req) => {
+  res.render("billingPage")
+})
+
+router.get("/details", (req, res) => {
+  res.render("detailsPage")
+})
+
+
 
 module.exports = router;

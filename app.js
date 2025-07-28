@@ -47,4 +47,8 @@ app.listen(port, () => {
   console.log(`🚀 Server is running on port ${port}`);
 });
 
+const bookRoutes = require("./routes/bookRoutes");
+app.use(bookRoutes);
+
+
 module.exports = app;
