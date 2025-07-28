@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
   firstname: {
@@ -9,7 +10,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  email:{
+  email: {
     type: String,
     required: true,
     unique: true
@@ -21,13 +22,22 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: true
   },
   confirmpassword: {
     type: String,
-    required: true,
-  },
-})
+    required: true
+  }
+});
 
+// ✅ Only hash if password is modified
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
 
-module.exports = mongoose.model("User", userSchema)
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  this.confirmpassword = undefined; // Don't store confirm password
+  next();
+});
+
+module.exports = mongoose.model("User", userSchema);

@@ -1,47 +1,50 @@
-// var createError = require("http-errors");
+require("dotenv").config(); // Load .env variables
+
 const express = require("express");
-var path = require("path");
-// var cookieParser = require("cookie-parser");
-// var logger = require("morgan");
+const path = require("path");
 const mongoose = require("mongoose");
-const port = process.env.PORT || 4000;
 const session = require("express-session");
-
-
-require("./config/db")
-const User = require("./models/User")
-
-
-const app = express();
 
 const publicRoutes = require("./routes/publicRoutes");
 const authRoutes = require("./routes/authRoutes");
 
+// Express app
+const app = express();
+const port = process.env.PORT || 4000;
 
+// Session middleware
 app.use(session({
-  secret: "yourSecretKey",
+  secret: process.env.SESSION_SECRET || "defaultSecret",
   resave: false,
   saveUninitialized: true
 }));
 
-app.set("views", path.join(__dirname, "views"))
+// View engine setup
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+// Body parsing & static files
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(port, () => {
-  console.log(`server is running at ${port}`)
-})
-
+// Routes
 app.use("/", publicRoutes);
-app.use("/", authRoutes );
+app.use("/", authRoutes);
 
-mongoose.connect("mongodb://localhost:27017/PanaGhar",{
-}).then(() => {
-  console.log(`database connection successful`);
-}).catch((e) => {
-  console.log(`no database connection`);
+// MongoDB connection (Atlas or Local)
+const dbURI = process.env.MONGODB_URI_ATLAS || process.env.MONGODB_URI_LOCAL;
+
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
+.then(() => console.log("✅ MongoDB connected successfully"))
+.catch((err) => console.error("❌ MongoDB connection error:", err));
+
+// Start server
+app.listen(port, () => {
+  console.log(`🚀 Server is running on port ${port}`);
+});
 
 module.exports = app;

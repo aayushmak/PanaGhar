@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 // My Rental Page
 router.get("/login", (req, res) => {
   if (req.session.user) {
-    return res.redirect("/rental");
+    return res.redirect("/login");
   }
 
   res.render("logIn"); 
@@ -39,5 +39,9 @@ router.get("/browse", async (req, res) => {
     books: [] // replace with real books later
   });
 });
+
+router.get("/dashboard",(req, res)=> {
+  res.render("userDashbaord")
+})
 
 module.exports = router;

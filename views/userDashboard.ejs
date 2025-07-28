@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-white font-['Inter']">
+    <div class="min-h-screen flex flex-col lg:flex-row">
+      <!-- Sidebar -->
+      <aside
+        id="sidebar"
+        class="w-full lg:w-[320px] bg-[#efeeee] border-r border-[#868686] p-6 lg:relative transform transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0"
+      >
+        <!-- Logo -->
+        <img
+          src="assets/green_logo.png"
+          alt="Logo"
+          class="mb-6 max-w-full h-auto"
+        />
+        <nav class="space-y-2">
+          <a
+            href="userDashboard.html"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#88965E80] text-[#52525B] font-semibold"
+          >
+            <i class="fa-solid fa-users"></i> Dashboard
+          </a>
+          <a
+            href="uploadBook.html"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#88965E80] text-[#52525B] font-semibold"
+          >
+            <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Books
+          </a>
+          <a
+            href="manageBook.html"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#88965E80] text-[#52525B] font-semibold"
+          >
+            <i class="fa-solid fa-book"></i> Manage Books
+          </a>
+          <a
+            href="Payment.html"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#88965E80] text-[#52525B] font-semibold"
+          >
+            <i class="fa-solid fa-box"></i> Payments
+          </a>
+          <a
+            href="login.html"
+            class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#88965E80] text-[#FF3D00] font-semibold"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Mobile Hamburger Icon -->
+      <button id="hamburger-btn" class="lg:hidden p-4">
+        <i class="fa-solid fa-bars text-[#324A16] text-2xl"></i>
+      </button>
+
+      <!-- Mobile Close Icon -->
+      <button id="close-btn" class="lg:hidden p-4 hidden">
+        <i class="fa-solid fa-xmark text-[#324A16] text-2xl"></i>
+      </button>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 sm:p-10">
+        <div class="flex justify-between items-center mb-10">
+          <h1 class="text-2xl sm:text-3xl font-semibold text-[#1b1b1b]">
+            Profile
+          </h1>
+        </div>
+
+        <!-- Profile Section -->
+        <div
+          class="flex flex-col sm:flex-row items-start sm:items-center mb-12 gap-4"
+        >
+          <div
+            class="bg-[#2024e2] h-[75px] w-[75px] rounded-full flex items-center justify-center overflow-hidden"
+          >
+            <img
+              src="assets/Mastercard.png"
+              class="h-[45px] w-[70px] object-contain"
+              alt=""
+            />
+          </div>
+          <div class="flex-1">
+            <p class="text-[#1B1F13] font-semibold text-lg sm:text-xl">
+              PanaGhar
+            </p>
+            <a
+              href="mailto:panaghar@gmail.com"
+              class="text-[#1B1F13] opacity-75 text-sm sm:text-base"
+              >panaghar@gmail.com</a
+            >
+          </div>
+          <button
+            class="bg-[#324A16] hover:bg-[#4f623a] text-white px-4 py-2 rounded-md transition"
+          >
+            Upload
+          </button>
+        </div>
+
+        <!-- Form Section -->
+        <form class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1100px]">
+          <!-- First Name -->
+          <div>
+            <label
+              for="firstName"
+              class="block text-base font-medium text-[#283618] mb-1"
+              >First Name <span class="text-red-600">*</span></label
+            >
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2 focus:ring-[#60853651] focus:border-[#69804f4e]"
+            />
+          </div>
+
+          <!-- Last Name -->
+          <div>
+            <label
+              for="lastName"
+              class="block text-base font-medium text-[#283618] mb-1"
+              >Last Name <span class="text-red-600">*</span></label
+            >
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2 focus:ring-[#60853651] focus:border-[#69804f4e]"
+            />
+          </div>
+
+          <!-- Gender -->
+          <div>
+            <label
+              for="gender"
+              class="block text-base font-medium text-[#283618] mb-1"
+              >Gender <span class="text-red-600">*</span></label
+            >
+            <select
+              id="gender"
+              name="gender"
+              class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
+            >
+              <option value="" disabled selected>Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <!-- Province -->
+          <div>
+            <label
+              for="province"
+              class="block text-base font-medium text-[#283618] mb-1"
+            >
+              Country: <span class="font-semibold">Nepal</span>
+              <span class="text-red-600">*</span>
+            </label>
+            <select
+              id="province"
+              name="province"
+              class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
+            >
+              <option value="" disabled selected>Select Province</option>
+              <option value="province-1">Province 1</option>
+              <option value="province-2">Province 2</option>
+              <option value="province-3">Province 3</option>
+              <option value="province-4">Province 4</option>
+              <option value="province-5">Province 5</option>
+              <option value="province-6">Province 6</option>
+              <option value="province-7">Province 7</option>
+            </select>
+          </div>
+
+          <!-- ID -->
+          <div>
+            <label
+              for="id"
+              class="block text-base font-medium text-[#283618] mb-1"
+              >ID <span class="text-red-600">*</span></label
+            >
+            <input
+              type="text"
+              id="id"
+              name="id"
+              class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
+            />
+          </div>
+
+          <!-- Phone Number -->
+          <div>
+            <label
+              for="phone"
+              class="block text-base font-medium text-[#283618] mb-1"
+              >Phone Number <span class="text-red-600">*</span></label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your Phone Number"
+              class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
+            />
+          </div>
+
+          <!-- Email + Bank Section Side-by-Side -->
+          <div
+            class="flex flex-col lg:flex-row justify-between gap-6 lg:gap-20 mt-6 font-['Poppins'] w-full lg:col-span-2"
+          >
+            <!-- Email Section -->
+            <div class="flex-1">
+              <h2 class="text-[#1B1F13] font-medium text-[20px] mb-3">
+                My email Address
+              </h2>
+              <div class="flex items-start gap-4">
+                <!-- Icon -->
+                <div
+                  class="h-[45px] w-[45px] rounded-full bg-[#EDF1E2] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-regular fa-envelope text-[#324A16] text-[18px]"
+                  ></i>
+                </div>
+
+                <!-- Texts -->
+                <div>
+                  <p class="text-[#1B1F13] text-[16px]">
+                    alexarawles@gmail.com
+                  </p>
+                  <p class="text-[#1B1F13] opacity-60 text-[14px] mb-4">
+                    1 month ago
+                  </p>
+                  <button
+                    class="text-[#324A16] bg-[#EDF1E2] text-[14px] font-medium px-4 py-2 rounded-full"
+                  >
+                    + Add Email Address
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank Section -->
+            <div class="flex-1">
+              <h2 class="text-[#1B1F13] font-medium text-[20px] mb-3">
+                My Bank Details
+              </h2>
+              <div class="flex items-start gap-4">
+                <!-- Icon -->
+                <div
+                  class="h-[45px] w-[45px] rounded-full bg-[#EDF1E2] flex items-center justify-center"
+                >
+                  <i
+                    class="fa-solid fa-building-columns text-[#324A16] text-[18px]"
+                  ></i>
+                </div>
+
+                <!-- Texts -->
+                <div>
+                  <p class="text-[#1B1F13] text-[16px]">100402020145</p>
+                  <p class="text-[#1B1F13] opacity-60 text-[14px] mb-4">
+                    Nabil Bank Pvt Ltd
+                  </p>
+                  <button
+                    class="text-[#324A16] bg-[#EDF1E2] text-[14px] font-medium px-4 py-2 rounded-full"
+                  >
+                    + Add Another Bank
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+      // Get the sidebar, hamburger, and close buttons
+      const sidebar = document.getElementById("sidebar");
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const closeBtn = document.getElementById("close-btn");
+
+      // Function to toggle the sidebar
+      function toggleSidebar() {
+        const isSidebarVisible =
+          !sidebar.classList.contains("-translate-x-full");
+        if (isSidebarVisible) {
+          // Hide sidebar
+          sidebar.classList.add("-translate-x-full");
+          closeBtn.classList.add("hidden"); // Hide the close button
+          hamburgerBtn.classList.remove("hidden"); // Show the hamburger button
+        } else {
+          // Show sidebar
+          sidebar.classList.remove("-translate-x-full");
+          closeBtn.classList.remove("hidden"); // Show the close button
+          hamburgerBtn.classList.add("hidden"); // Hide the hamburger button
+        }
+      }
+
+      // Add event listeners to hamburger and close buttons
+      hamburgerBtn.addEventListener("click", toggleSidebar);
+      closeBtn.addEventListener("click", toggleSidebar);
+    </script>
+  </body>
+</html>

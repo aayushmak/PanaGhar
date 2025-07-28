@@ -26,7 +26,7 @@
   <body
     class="min-h-[160vh] flex flex-col bg-[#FEFAE0] font-['Inter'] text-white"
   >
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
     <nav class="p-3 flex bg-[#324A16] justify-between items-center">
       <!-- Logo -->
       <a href="#" class="flex items-center flex-1">
@@ -39,26 +39,17 @@
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex gap-[75px]">
-        <a
-          href="landingPageUser.html"
-          class="font-poppins text-[16px] text-[#b4cb6e]"
-          >Home</a
+        <a href="/" class="font-poppins text-[16px] text-[#b4cb6e]">Home</a>
+        <a href="/browse" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Browse</a
         >
-        <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]">Browse</a>
-        <a
-          href="myRentals.html"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
-        >
+        <a href="/rental" class="font-poppins text-[16px] hover:text-[#b4cb6e]">
           My Rentals
         </a>
-        <a
-          href="aboutUs.html"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >About Us</a
         >
-        <a
-          href="team.html"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/team" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Our Team</a
         >
       </div>
@@ -77,9 +68,10 @@
             class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"
           ></i
         ></a>
-        <a href="userDashboard.html"
-          ><i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i
-        ></a>
+        <a href="/dashboard"
+          ><i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+          <h2>Welcome, <%= user.firstname %>!</h2>
+        </a>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -89,7 +81,8 @@
 
       <!-- Mobile Navigation -->
       <div
-        id="nav-dialog" class="hidden opacity-0 -translate-y-5 fixed z-10 inset-0 p-3 bg-[#324A16] lg:hidden transition-all duration-300"
+        id="nav-dialog"
+        class="hidden opacity-0 -translate-y-5 fixed z-10 inset-0 p-3 bg-[#324A16] lg:hidden transition-all duration-300"
       >
         <div class="flex justify-between items-center">
           <img
@@ -107,7 +100,9 @@
             class="font-poppins text-[16px] text-[#b4cb6e]"
             >Home</a
           >
-          <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]">Browse</a>
+          <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+            >Browse</a
+          >
           <a
             href="myRentals.html"
             class="font-poppins text-[16px] hover:text-[#b4cb6e]"
@@ -643,8 +638,6 @@
 
       // Initialize on page load
       updateSlider();
-
-
 
       //nav bar
       function handleMenu() {
