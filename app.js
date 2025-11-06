@@ -1,54 +1,71 @@
-require("dotenv").config(); // Load .env variables
+// Load environment variables
+require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
+// Import routes
 const publicRoutes = require("./routes/publicRoutes");
 const authRoutes = require("./routes/authRoutes");
+const bookRoutes = require("./routes/bookRoutes");
 
-// Express app
+// Initialize Express
 const app = express();
 const port = process.env.PORT || 4000;
 
-// Session middleware
-app.use(session({
-  secret: process.env.SESSION_SECRET || "defaultSecret",
-  resave: false,
-  saveUninitialized: true
-}));
+// ------------------------------
+// 🔐 Session Middleware
+// ------------------------------
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "defaultSecret",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
-// View engine setup
+// ------------------------------
+// 🧩 View Engine Setup (EJS)
+// ------------------------------
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// Body parsing & static files
+// ------------------------------
+// 📦 Middleware Setup
+// ------------------------------
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Serve static files (CSS, JS, Images)
 app.use(express.static(path.join(__dirname, "public")));
 
-// Routes
+// ------------------------------
+// 🛣️ Route Setup
+// ------------------------------
 app.use("/", publicRoutes);
 app.use("/", authRoutes);
+app.use("/", bookRoutes);
 
-// MongoDB connection (Atlas or Local)
+// ------------------------------
+// 🌐 MongoDB Connection
+// ------------------------------
 const dbURI = process.env.MONGODB_URI_ATLAS || process.env.MONGODB_URI_LOCAL;
 
-mongoose.connect(dbURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log("✅ MongoDB connected successfully"))
-.catch((err) => console.error("❌ MongoDB connection error:", err));
+mongoose
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB connected successfully"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// Start server
+// ------------------------------
+// 🚀 Start Server
+// ------------------------------
 app.listen(port, () => {
-  console.log(`🚀 Server is running on port ${port}`);
+  console.log(`🚀 Server running at http://localhost:${port}`);
 });
-
-const bookRoutes = require("./routes/bookRoutes");
-app.use(bookRoutes);
-
 
 module.exports = app;
