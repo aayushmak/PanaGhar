@@ -10,6 +10,7 @@ const session = require("express-session");
 const publicRoutes = require("./routes/publicRoutes");
 const authRoutes = require("./routes/authRoutes");
 const bookRoutes = require("./routes/bookRoutes");
+const rentalRoutes = require("./routes/rentalRoutes")
 
 // Initialize Express
 const app = express();
@@ -47,6 +48,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", publicRoutes);
 app.use("/", authRoutes);
 app.use("/", bookRoutes);
+app.use("/", rentalRoutes)
 
 // ------------------------------
 // 🌐 MongoDB Connection

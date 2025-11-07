@@ -1,44 +1,3 @@
-const Book = require("../models/Book");
-const path = require("path");
-const fs = require("fs");
-
-// Use multer to handle image uploads
-const multer = require("multer");
-
-// Storage config
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadPath = path.join(__dirname, "..", "public", "uploads");
-    fs.mkdirSync(uploadPath, { recursive: true }); // Ensure directory exists
-    cb(null, uploadPath);
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + "-" + uniqueSuffix + ext);
-  }
-});
-
-// File filter (optional, restrict to images only)
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === "image/jpeg" ||
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg"
-  ) {
-    cb(null, true);
-  } else {
-    cb(new Error("Only image files are allowed!"), false);
-  }
-};
-
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
-  fileFilter: fileFilter
-}).array("images", 4); // Max 4 images
-
-// Controller function
 exports.handleBookUpload = (req, res) => {
   upload(req, res, async function (err) {
     if (err) {
@@ -48,7 +7,6 @@ exports.handleBookUpload = (req, res) => {
 
     const { bookName, genre, author, condition, description } = req.body;
 
-    // Validate manually just in case
     if (!bookName || !genre || !author || !condition || !description) {
       return res.render("uploadBook", {
         error: "All fields are required.",
@@ -57,8 +15,32 @@ exports.handleBookUpload = (req, res) => {
     }
 
     try {
-      const imagePaths = req.files.map((file) => `/uploads/${file.filename}`);
+      // ✅ Assign price based on condition
+      let price;
+      switch (condition.toLowerCase()) {
+        case "excellent":
+          price = 300;
+          break;
+        case "good":
+          price = 250;
+          break;
+        case "average":
+          price = 200;
+          break;
+        case "bad":
+          price = 150;
+          break;
+        default:
+          price = 200;
+      }
 
+      // ✅ Handle image uploads (default image if none)
+      const imagePaths =
+        req.files && req.files.length > 0
+          ? req.files.map((file) => `/uploads/${file.filename}`)
+          : ["/uploads/default-book.png"];
+
+      // ✅ Create new book
       const newBook = new Book({
         bookName,
         genre,
@@ -66,19 +48,22 @@ exports.handleBookUpload = (req, res) => {
         condition,
         description,
         imageUrls: imagePaths,
+        price, // ✅ Add price field
         uploadedBy: req.session.user ? req.session.user._id : null
       });
 
       await newBook.save();
+
+      console.log("✅ Book uploaded successfully:", newBook);
 
       res.render("uploadBook", {
         success: "Book uploaded successfully!",
         error: null
       });
     } catch (saveErr) {
-      console.error("Upload error:", saveErr);
+      console.error("❌ Upload error:", saveErr);
       res.render("uploadBook", {
-        error: "Something went wrong while uploading.",
+        error: "Something went wrong while uploading the book.",
         success: null
       });
     }

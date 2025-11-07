@@ -387,12 +387,34 @@ async function seedBooks() {
   try {
     await mongoose.connect(dbURI, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
-    console.log("✅ Connected to MongoDB Atlas");
+    console.log("✅ Connected to MongoDB");
 
+    // Remove existing books
     await Book.deleteMany();
-    await Book.insertMany(books);
+
+    // Add price to each book based on condition
+    const booksWithPrice = books.map(book => {
+      let price = 0;
+      switch (book.condition.toLowerCase()) {
+        case "excellent":
+          price = 300;
+          break;
+        case "good":
+          price = 250;
+          break;
+        case "average":
+          price = 200;
+          break;
+        case "bad":
+          price = 150;
+          break;
+      }
+      return { ...book, price };
+    });
+
+    await Book.insertMany(booksWithPrice);
     console.log("🌱 Books inserted successfully!");
 
     mongoose.connection.close();
@@ -401,4 +423,5 @@ async function seedBooks() {
   }
 }
 
+// Run the seed function
 seedBooks();
