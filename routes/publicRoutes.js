@@ -38,22 +38,31 @@ router.get("/dashboard", (req, res) => {
   res.render("userDashboard");
 });
 
-// Billing
-router.get("/billing", (req, res) => {
-  res.render("billingPage");
+
+router.get("/details/:id", async (req, res) => {
+  try {
+    const book = await Book.findById(req.params.id).lean();
+    if (!book) return res.status(404).send("Book not found");
+
+    res.render("detailsPage", {
+      book,
+      user: req.session.user || null, // ✅ pass the user (or null if not logged in)
+    });
+  } catch (err) {
+    console.error("Error loading details page:", err);
+    res.status(500).send("Server error loading book details");
+  }
 });
 
-// Details Page
-router.get("/details", (req, res) => {
-  res.render("detailsPage");
-});
 
 //Favourite Page
 router.get("/favourite", (req, res) => {
   res.render("favouritePage")
 })
 
-
+router.get("rental", (res, req) => {
+  res.render("myRentals")
+})
 
 
 module.exports = router;

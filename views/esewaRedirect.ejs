@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting to eSewa...</title>
+</head>
+<body onload="document.getElementById('esewaForm').submit()">
+  <h2 style="text-align:center; margin-top: 100px;">Redirecting to eSewa...</h2>
+
+  <form id="esewaForm" action="https://rc-epay.esewa.com.np/api/epay/main/v2/form" method="POST">
+    <input type="hidden" name="amount" value="<%= total_amount %>" />
+    <input type="hidden" name="tax_amount" value="0" />
+    <input type="hidden" name="total_amount" value="<%= total_amount %>" />
+    <input type="hidden" name="transaction_uuid" value="<%= transaction_uuid %>" />
+    <input type="hidden" name="product_code" value="<%= product_code %>" />
+    <input type="hidden" name="product_service_charge" value="0" />
+    <input type="hidden" name="product_delivery_charge" value="0" />
+    <input type="hidden" name="signed_field_names" value="total_amount,transaction_uuid,product_code" />
+    <input type="hidden" name="signature" value="<%= signature %>" />
+    <input type="hidden" name="success_url" value="<%= successUrl %>" />
+    <input type="hidden" name="failure_url" value="<%= failureUrl %>" />
+    <input type="hidden" name="bookId" value="<%= book._id %>" />
+  </form>
+
+  <script>
+    document.getElementById('esewaForm').submit();
+  </script>
+</body>
+</html>

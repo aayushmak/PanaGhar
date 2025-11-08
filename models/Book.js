@@ -1,3 +1,4 @@
+// models/Book.js
 const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
@@ -9,22 +10,33 @@ const bookSchema = new mongoose.Schema({
   imageUrls: { type: [String], default: [] },
   price: { type: Number },
   uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  uploadedAt: { type: Date, default: Date.now }
+  uploadedAt: { type: Date, default: Date.now },
+  status: {
+    type: String,
+    enum: ["available", "rented", "overdue"],
+    default: "available",
+  },
+  rentedAt: { type: Date },
+  rentedBy: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+  default: null,
+},
+
 });
 
-// Pre-save hook to set price according to condition
-bookSchema.pre('save', function (next) {
+bookSchema.pre("save", function (next) {
   switch (this.condition.toLowerCase()) {
-    case 'excellent':
+    case "excellent":
       this.price = 300;
       break;
-    case 'good':
+    case "good":
       this.price = 250;
       break;
-    case 'average':
+    case "average":
       this.price = 200;
       break;
-    case 'bad':
+    case "bad":
       this.price = 150;
       break;
     default:

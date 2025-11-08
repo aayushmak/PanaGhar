@@ -6,6 +6,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
 
+
 // Import routes
 const publicRoutes = require("./routes/publicRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -50,6 +51,9 @@ app.use("/", authRoutes);
 app.use("/", bookRoutes);
 app.use("/", rentalRoutes)
 
+app.use(express.static("public")); // or "assets" depending on your folder
+
+
 // ------------------------------
 // 🌐 MongoDB Connection
 // ------------------------------
@@ -70,4 +74,15 @@ app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
 });
 
+const Book = require("./models/Book");
+
+Book.updateMany(
+  { status: { $exists: false } },
+  { $set: { status: "available" } }
+)
+  .then((result) => {
+    console.log(`✅ Updated ${result.modifiedCount} books to have status 'available'`);
+  })
+  .catch((err) => console.error("❌ Error updating books:", err));
+  
 module.exports = app;

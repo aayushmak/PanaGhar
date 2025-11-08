@@ -260,40 +260,43 @@
 
           <!-- Image Grid -->
           <div
-            id="product-grid"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center ml-[120px] mt-[40px]"
-          >
-            <% if (books && books.length > 0) { %> <% books.forEach(book => { %>
-            <div
-              class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[10rem] transition-transform ease-in-out duration-[400ms] hover:scale-[1.03] hover:shadow-[3px_5px_5px_rgba(1,1,1,0.4)]"
-              style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-              data-genre="<%= book.genre %>"
-              data-condition="<%= book.condition %>"
-              data-availability="<%= book.availability || 'available' %>"
-            >
-              <img
-                class="h-[260px] w-[190px] object-cover mb-3 rounded-t-md"
-                src="<%= book.imageUrls && book.imageUrls.length ? book.imageUrls[0] : '/uploads/default-book.png' %>"
-                alt="<%= book.bookName %> book cover"
-              />
-              <span
-                class="text-black text-[16px] font-medium w-[90%] text-center"
-              >
-                <%= book.bookName %>
-              </span>
-              <span class="text-[#BC6C25] text-[14px] w-[90%] text-center">
-                <%= book.author %>
-              </span>
-              <span class="text-[#324A16] font-semibold">
-                Rs <%= book.price %>
-              </span>
-            </div>
-            <% }) %> <% } else { %>
-            <div class="col-span-full text-center mt-10">
-              <p class="text-gray-500 text-lg">No books found.</p>
-            </div>
-            <% } %>
-          </div>
+  id="product-grid"
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center ml-[120px] mt-[40px]"
+>
+  <% if (books && books.length > 0) { %>
+    <% books.forEach(book => { %>
+      <a href="/books/<%= book._id %>" class="no-underline">
+        <div
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[10rem]
+          transition-transform ease-in-out duration-[400ms] hover:scale-[1.03]
+          hover:shadow-[3px_5px_5px_rgba(1,1,1,0.4)]"
+          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
+          data-genre="<%= book.genre %>"
+        >
+          <img
+            class="h-[260px] w-[190px] object-cover mb-3 rounded-t-md"
+            src="<%= book.imageUrls && book.imageUrls.length ? book.imageUrls[0] : '/uploads/default-book.png' %>"
+            alt="<%= book.bookName %> book cover"
+          />
+          <span class="text-black text-[16px] font-medium w-[90%] text-center">
+            <%= book.bookName %>
+          </span>
+          <span class="text-[#BC6C25] text-[14px] w-[90%] text-center">
+            <%= book.author %>
+          </span>
+          <span class="text-[#324A16] font-semibold">
+            Rs <%= book.price %>
+          </span>
+        </div>
+      </a>
+    <% }) %>
+  <% } else { %>
+    <div class="col-span-full text-center mt-10">
+      <p class="text-gray-500 text-lg">No books found.</p>
+    </div>
+  <% } %>
+</div>
+
 
           <div
             id="no-results"

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PanaGhar Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="min-h-screen flex flex-col bg-[#FEFAE0] text-white font-['Inter']"
+  >
+    <!-- NAV-BAR -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 bg-[#324A16] p-3 flex flex-wrap justify-between items-center shadow-md"
+    >
+      <!-- Logo -->
+      <a href="#" id="brand" class="flex gap-2 items-center flex-1">
+        <img
+          class="w-[140px] sm:w-[160px] md:w-[180px] lg:w-[190px] h-[50px] sm:h-[55px] md:h-[59px] ml-[10px] sm:ml-[30px] lg:ml-[50px] mb-1.5"
+          src="assets/landing_logo.png"
+          alt="Logo"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div id="nav-menu" class="hidden lg:flex gap-8 xl:gap-[75px]">
+        <a
+          href="landing-page-user.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Home</a
+        >
+        <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Browse</a
+        >
+        <a
+          href="my-rental.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >My Rentals</a
+        >
+        <a
+          href="about-us.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >About Us</a
+        >
+        <a
+          href="team.html"
+          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >Our Team</a
+        >
+      </div>
+
+      <!-- Icons -->
+      <div class="hidden lg:flex flex-1 justify-end">
+        <button
+          class="flex text-lg font-medium font-serif gap-6 xl:gap-[25px] items-center pr-6 xl:pr-10"
+        >
+          <a href="favourite-page.html"
+            ><i class="fa-regular fa-heart hover:text-[#b4cb6e]"></i
+          ></a>
+          <a href="billing_page.html"
+            ><i class="fa-solid fa-cart-shopping text-[#b4cb6e]"></i
+          ></a>
+          <a href="dashboard.html"
+            ><i class="fa-solid fa-user hover:text-[#b4cb6e]"></i
+          ></a>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <!-- Mobile Menu Button -->
+      <button class="p-2 lg:hidden" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+
+      <!-- Mobile Menu -->
+      <div
+        id="nav-dialog"
+        class="hidden opacity-0 -translate-y-5 transition-all duration-300 ease-in-out fixed z-50 lg:hidden bg-[#324A16] inset-0 p-3"
+      >
+        <div class="flex justify-between items-center">
+          <a href="#" class="flex gap-2 items-center">
+            <img
+              class="w-[180px] h-[60px]"
+              src="assets/landing_logo.png"
+              alt="Logo"
+            />
+          </a>
+          <button class="p-2 lg:hidden" onclick="handleMenu()">
+            <i class="fa-solid fa-xmark text-white text-2xl"></i>
+          </button>
+        </div>
+
+        <div class="mt-6 flex flex-col">
+          <a
+            href="landingPageUser.html"
+            class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Home</a
+          >
+          <a href="#" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Browse</a
+          >
+          <a
+            href="myRentals.html"
+            class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >My Rentals</a
+          >
+          <a
+            href="aboutUs.html"
+            class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >About Us</a
+          >
+          <a href="team.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+            >Our Team</a
+          >
+          <div class="mt-[20px] gap-4">
+            <a href="favouritePage.html"
+              ><i
+                class="fa-regular fa-heart ml-5 text-[22px] hover:text-[#b4cb6e]"
+              ></i
+            ></a>
+            <a href="billingPage.html"
+              ><i
+                class="fa-solid fa-cart-shopping ml-5 text-[22px] hover:text-[#b4cb6e]"
+              ></i
+            ></a>
+            <a href="userDashboard.html"
+              ><i
+                class="fa-solid fa-user ml-5 text-[22px] hover:text-[#b4cb6e]"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow px-[3.7rem]">
+      <!-- heading-section -->
+      <section class="pt-[2.95rem] pb-[1rem]">
+        <h1 class="text-[22px] font-medium text-[#324A16]">
+          Home / Browse / Billing
+        </h1>
+      </section>
+
+      <!-- Your-cart -->
+      <div class="bg-[#f3f3f3] h-[430px] bg-opacity-40">
+        <section class="pt-[1.95rem] pl-[40px] mb-2">
+          <h1 class="text-[22px] font-bold text-black">Your Cart</h1>
+        </section>
+
+        <!-- Items + Summary -->
+        <div id="cart-wrapper" class="flex justify-evenly">
+          <!-- Left: Book Items -->
+          <div class="flex flex-col" id="cart-items">
+            <!-- Book Item 1 -->
+            <div
+  class="cart-item flex items-center border-[0.5px] rounded-[4px] border-[#e3e3e3] h-[130px] w-[850px] bg-[#fafafa] mb-4 px-4"
+  data-price="<%= book.price %>"
+>
+  <img
+    class="h-[96px] w-[67px] mr-4"
+    src="<%= book.imageUrls || 'assets/default-book.png' %>"
+    alt="<%= book.bookName %>"
+  />
+  <div class="flex flex-col justify-center space-y-1">
+    <span class="text-black font-medium"><%= book.title %></span>
+    <span class="text-[#71717A] font-medium"><%= book.author %></span>
+    <div class="text-[#3F3F46]">
+      <i class="fa-solid fa-star"></i>
+      <span class="font-semibold">4.5</span>
+    </div>
+  </div>
+  <div class="flex flex-col items-end ml-auto space-y-2">
+    <span class="text-black font-medium">Rs <%= book.price %></span>
+    <i
+      class="fa-solid fa-trash delete-items text-[#FF4B4A] cursor-pointer"
+    ></i>
+  </div>
+</div>
+
+
+            <!-- Book Item 2 -->
+            
+          <div>
+            <p
+              id="empty-cart-msg"
+              class="hidden text-center text-[16px] font-semibold text-gray-500 mb-3"
+            >
+              Your cart is empty.
+            </p>
+          </div>
+
+          <!-- Right: Order Summary -->
+          <div
+            id="popupModal"
+            class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+          >
+            <div
+              class="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm w-full"
+            >
+              <h2 class="text-xl font-bold text-[#324A16] mb-4">
+                Your order has been placed!
+              </h2>
+              <p class="text-gray-700 mb-6">Keep Exploring, Keep Learning!</p>
+              <button
+                onclick="closeModal()"
+                class="bg-[#324A16] text-white px-4 py-2 rounded hover:bg-[#2a3e13]"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+          <div class="bg-[#e5e5e5] h-[300px] w-[350px] rounded-lg p-4">
+            <h2 class="text-black text-xl font-bold mb-4">Order Summary</h2>
+
+            <div class="flex justify-between text-black mb-2">
+              <span>Items:</span>
+              <span class="font-semibold" id="item-count">2</span>
+            </div>
+
+            <div class="flex justify-between text-black mb-2">
+              <span>Subtotal:</span>
+              <span class="font-semibold">
+                Rs <span id="order-subtotal">570</span>
+              </span>
+            </div>
+
+            <div class="flex justify-between text-black mb-2">
+              <span>Shipping:</span>
+              <span class="font-semibold">
+                Rs <span id="order-shipping">80</span>
+              </span>
+            </div>
+
+            <div class="text-black text-sm pt-1.5">
+              Spend Rs
+              <span id="remaining-amount" class="font-semibold">430</span> more
+              to get
+              <span class="font-[600] text-[#335a07] ml-0.5 text-[16px]">
+                FREE Shipping!
+              </span>
+            </div>
+
+            <hr class="border-black my-2" />
+
+            <div class="flex justify-between text-black font-semibold text-lg">
+              <span>Total</span>
+              <span>Rs <span id="order-total">650</span></span>
+            </div>
+
+            <button
+              id="checkout"
+              class="mt-4 w-full bg-black text-white font-bold py-2 rounded hover:text-[#b4cb6e]"
+            >
+              Checkout
+            </button>
+            <a href="/esewa/pay/<%= book._id %>">
+  <button
+    class="bg-green-600 text-white px-5 py-2 rounded-md hover:bg-green-700 transition"
+  >
+    Pay with eSewa
+  </button>
+</a>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="flex flex-col items-center mt-10 px-[3.8rem] py-6">
+      <div
+        class="w-full border border-dashed border-[#324A16] opacity-50"
+      ></div>
+      <span
+        class="text-[#324A16] font-normal text-base md:text-lg mt-4 text-center"
+      >
+        © 2025 <span class="font-semibold">PanaGhar</span>. All rights reserved.
+      </span>
+    </footer>
+
+    <script>
+      // delete from the add to cart
+      const deleteItems = document.querySelectorAll(".delete-items");
+      deleteItems.forEach((button) => {
+        button.addEventListener("click", () => {
+          button.closest("div.flex.items-center").remove();
+        });
+      });
+
+      //Payment change if delete or add to cart
+
+      // Get references to all required DOM elements
+      const itemCountEl = document.getElementById("item-count");
+      const orderSubtotalEl = document.getElementById("order-subtotal");
+      const orderShippingEl = document.getElementById("order-shipping");
+      const orderTotalEl = document.getElementById("order-total");
+      const remainingAmountEl = document.getElementById("remaining-amount");
+      const cartWrapper = document.getElementById("cart-wrapper");
+      const emptyCartMsg = document.getElementById("empty-cart-msg");
+
+      // Define shipping and free shipping threshold
+      const freeShippingThreshold = 1000;
+      const fixedShipping = 80;
+
+      // Function to update the order summary
+      function updateOrderSummary() {
+        // Get all cart items
+        const items = document.querySelectorAll(".cart-item");
+        let subtotal = 0;
+
+        // Calculate subtotal by adding up item prices
+        items.forEach((item) => {
+          const price = parseFloat(item.getAttribute("data-price"));
+          subtotal += price;
+        });
+
+        // Check if cart is empty
+        const isEmpty = items.length === 0;
+
+        // Calculate shipping using if...else
+        let shipping;
+
+        if (isEmpty) {
+          shipping = 0; // No shipping for empty cart
+        } else if (subtotal >= freeShippingThreshold) {
+          shipping = 0; // Free shipping condition met
+        } else {
+          shipping = fixedShipping; // Flat shipping rate
+        }
+
+        // Calculate remaining amount to get free shipping
+        let remaining;
+
+        if (isEmpty) {
+          remaining = freeShippingThreshold;
+        } else {
+          if (freeShippingThreshold - subtotal > 0) {
+            remaining = freeShippingThreshold - subtotal;
+          } else {
+            remaining = 0;
+          }
+        }
+
+        // Calculate total = subtotal + shipping
+        const total = subtotal + shipping;
+
+        // Update values in the order summary UI
+        itemCountEl.textContent = items.length;
+        orderSubtotalEl.textContent = subtotal;
+        orderShippingEl.textContent = shipping;
+        orderTotalEl.textContent = total;
+        remainingAmountEl.textContent = remaining;
+
+        // If cart is empty, center everything and show empty cart message
+        if (isEmpty) {
+          cartWrapper.classList.remove("justify-evenly");
+          cartWrapper.classList.add("flex-col", "items-center");
+          emptyCartMsg.classList.remove("hidden");
+        } else {
+          // If cart has items, go back to normal layout and hide empty message
+          cartWrapper.classList.add("justify-evenly");
+          cartWrapper.classList.remove("flex-col", "items-center");
+          emptyCartMsg.classList.add("hidden");
+        }
+      }
+
+      // Run summary update on page load
+      updateOrderSummary();
+
+      // When delete icon is clicked, remove item and update summary
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("delete-items")) {
+          e.target.closest(".cart-item").remove();
+          updateOrderSummary();
+        }
+      });
+      // Pop-Up after checkout
+
+      const modal = document.getElementById("popupModal");
+      const checkoutBtn = document.getElementById("checkout");
+
+      checkoutBtn.addEventListener("click", () => {
+        const items = document.querySelectorAll(".cart-item");
+        if (items.length === 0) {
+          return;
+        }
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+
+      function closeModal() {
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+      }
+      window.closeModal = closeModal;
+
+      // for nav-bar
+
+      function handleMenu() {
+        const navDialog = document.getElementById("nav-dialog");
+
+        const isHidden = navDialog.classList.contains("hidden");
+
+        if (isHidden) {
+          navDialog.classList.remove("hidden");
+          setTimeout(() => {
+            navDialog.classList.remove("opacity-0", "-translate-y-5");
+          }, 10);
+        } else {
+          navDialog.classList.add("opacity-0", "-translate-y-5");
+          setTimeout(() => {
+            navDialog.classList.add("hidden");
+          }, 300);
+        }
+      }
+    </script>
+  </body>
+</html>
