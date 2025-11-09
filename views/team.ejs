@@ -27,7 +27,7 @@
     <!-- NAV-BAR -->
     <nav class="p-3 flex bg-[#324A16] justify-between items-center">
       <!-- Logo -->
-      <a href="#" id="brand" class="flex gap-2 items-center flex-1">
+      <a href="/" id="brand" class="flex gap-2 items-center flex-1">
         <img
           class="object-cover w-[197px] h-[59px] ml-[50px] mb-1.5"
           src="assets/landing_logo.png"
@@ -37,18 +37,18 @@
 
       <!-- Desktop Menu -->
       <div id="nav-menu" class="hidden lg:flex gap-[75px]">
-        <a href="landingPageUser.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Home</a
         >
-        <a href="" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/browse" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Browse</a
         >
-        <a href="myRentals.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/rental" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >My Rentals</a>
-        <a href="aboutUs.html" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >About Us</a
         >
-        <a href="team.html" class="font-poppins text-[16px] text-[#b4cb6e]"
+        <a href="/team" class="font-poppins text-[16px] text-[#b4cb6e]"
           >Our Team</a
         >
       </div>
@@ -61,13 +61,16 @@
           <i class="fa-regular fa-heart hover:text-[#b4cb6e]"></i>
           <i class="fa-solid fa-cart-shopping hover:text-[#b4cb6e]"></i>
 <% if (user) { %>
-        <a href="/dashboard" class="flex items-center space-x-2">
-          <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
-          <h2>Welcome, <%= user.firstname %>!</h2>
-        </a>
-        <% } else { %>
-        <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
-        <% } %>        </button>
+  <a href="/dashboard" class="flex items-center space-x-2">
+    <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+    <h2>Welcome, <%= user.firstname %>!</h2>
+  </a>
+<% } else { %>
+  <a href="/login">
+    <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+  </a>
+<% } %>
+     </button>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -81,7 +84,7 @@
         class="hidden fixed z-10 md:hidden bg-[#324A16] inset-0 p-3"
       >
         <div id="nav-bar" class="flex justify-between">
-          <a href="#" id="brand" class="flex gap-2 items-center">
+          <a href="/" id="brand" class="flex gap-2 items-center">
             <img
               class="object-cover w-[180px] h-[60px]"
               src="assets/landing_logo.png"
@@ -93,17 +96,17 @@
           </button>
         </div>
         <div class="mt-6 flex flex-col">
-          <a href="landingPageUser.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3">Home</a>
-          <a href="#" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+          <a href="/" class="font-poppins hover:text-[#b4cb6e] m-3 p-3">Home</a>
+          <a href="/browse" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >Browse</a
           >
-          <a href="myRentals.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+          <a href="/rental" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >My Rentals</a
           >
-          <a href="aboutUs.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+          <a href="/about" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >About Us</a
           >
-          <a href="team.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+          <a href="/team" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >Our Team</a
           >
         </div>

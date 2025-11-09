@@ -28,18 +28,20 @@
         id="icon"
         class="lg:w-[350px] md:w-[300px] sm:w-[200px] lg:h-full flex flex-col lg:px-3 md:px-10 sm:px-7 w-full bg-[#efeeee] border-r border-[#868686]"
       >
-        <img
+        <a href="/">
+          <img
           src="assets/green_logo.png"
           alt=""
           class="lg:w-[270px] lg:h-[80px] md:w-[350px] md:h-[55px] sm:w-[300px] sm:h-[45px] mt-6"
         />
+        </a>
         <!-- Upload -->
         <div>
           <div
             class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-6 ml-3"
           >
             <i class="fa-solid fa-users"></i>
-            <a class="font-semibold text-[18px]" href="userDashboard.html"
+            <a class="font-semibold text-[18px]" href="/dashboard"
               >Dashboard</a
             >
           </div>
@@ -47,7 +49,7 @@
             class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
           >
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
-            <a class="font-semibold text-[18px]" href="uploadBook.html"
+            <a class="font-semibold text-[18px]" href="/upload"
               >Upload Books</a
             >
           </div>
@@ -55,7 +57,7 @@
             class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
           >
             <i class="fa-solid fa-book"></i>
-            <a class="font-semibold text-[18px]" href="manageBook.html"
+            <a class="font-semibold text-[18px]" href="/manageBook"
               >Manage Books
             </a>
           </div>
@@ -63,7 +65,7 @@
             class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
           >
             <i class="fa-solid fa-box"></i>
-            <a class="font-semibold text-[18px]" href="Payment.html"
+            <a class="font-semibold text-[18px]" href="/payments"
               >Payments</a
             >
           </div>
@@ -71,7 +73,7 @@
             class="button_upload flex items-center justify-start gap-3 p-4 text-[#FF3D00] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
           >
             <i class="fa-solid fa-right-from-bracket"></i>
-            <a class="font-semibold text-[18px]" href="login.html">Logout</a>
+            <a class="font-semibold text-[18px]" href="/login">Logout</a>
           </div>
         </div>
       </div>
@@ -132,7 +134,7 @@
           </table>
         </div>
         <!-- Add this above your table inside the container where your table is -->
-        <div class="mb-4 mt-[20px] flex items-center justify-between">
+        <!-- <div class="mb-4 mt-[20px] flex items-center justify-between">
           <input
             type="text"
             id="newBookName"
@@ -163,7 +165,7 @@
           >
             Create
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
 

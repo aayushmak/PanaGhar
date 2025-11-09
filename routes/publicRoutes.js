@@ -31,16 +31,20 @@ router.get("/login", (req, res) => {
   res.render("logIn");
 });
 
-// About Us Page
 router.get("/about", (req, res) => {
-  res.render("aboutUs");
+  res.render("aboutUs", {
+    user: req.session.user || null
+  });
 });
+
 
 
 
 // Our Team Page
 router.get("/team", (req, res) => {
-  res.render("team");
+  res.render("team", {
+    user: req.session.user || null
+  });
 });
 
 
