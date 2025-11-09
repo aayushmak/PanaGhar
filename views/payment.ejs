@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PanaGhar Login</title>
+    <title>PanaGhar - Payments</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -23,65 +23,74 @@
 
   <body class="bg-white font-sans">
     <div class="h-[100vh] flex">
-      <!-- Left side (type) -->
+      <!-- Sidebar -->
       <div
         id="icon"
         class="lg:w-[350px] md:w-[300px] sm:w-[200px] lg:h-full border-r border-[#868686] flex flex-col lg:px-3 md:px-10 sm:px-7 w-full bg-[#efeeee]"
       >
         <a href="/">
           <img
-          src="assets/green_logo.png"
-          alt=""
-          class="lg:w-[270px] lg:h-[80px] md:w-[350px] md:h-[55px] sm:w-[300px] sm:h-[45px] mt-6"
-        />
+            src="assets/green_logo.png"
+            alt=""
+            class="lg:w-[270px] lg:h-[80px] md:w-[350px] md:h-[55px] sm:w-[300px] sm:h-[45px] mt-6"
+          />
         </a>
-        <!-- Upload -->
+        <!-- Navigation -->
         <div>
           <div
-          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B]  border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-6 ml-3"
-        >
-          <i class="fa-solid fa-users"></i>
-          <a class="font-semibold text-[18px]" href="userDashboard.html">Dashboard</a>
-        </div>
-        <div
-          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
-        >
-          <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          <a class="font-semibold text-[18px]" href="uploadBook.html"
-            >Upload Books</a
+            class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-6 ml-3"
           >
-        </div>
-        <div
-          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
-        >
-          <i class="fa-solid fa-book"></i>
-          <a class="font-semibold text-[18px]" href="manageBook.html">Manage Books </a>
-        </div>
-        <div
-          class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
-        >
-          <i class="fa-solid fa-box"></i>
-          <a class="font-semibold text-[18px]" href="Payment.html">Payments</a>
-        </div>
-        <div
-          class="button_upload flex items-center justify-start gap-3 p-4 text-[#FF3D00] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
-        >
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <a class="font-semibold text-[18px]" href="login.html">Logout</a>
-        </div>
-
+            <i class="fa-solid fa-users"></i>
+            <a class="font-semibold text-[18px]" href="/dashboard">Dashboard</a>
+          </div>
+          <div
+            class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+          >
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            <a class="font-semibold text-[18px]" href="/upload">Upload Books</a>
+          </div>
+          <div
+            class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+          >
+            <i class="fa-solid fa-book"></i>
+            <a class="font-semibold text-[18px]" href="/manageBook">Manage Books</a>
+          </div>
+          <div
+            class="button_upload flex items-center justify-start gap-3 p-4 text-[#52525B] border-0 transition duration-500 bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+          >
+            <i class="fa-solid fa-box"></i>
+            <a class="font-semibold text-[18px]" href="/payments">Payments</a>
+          </div>
+          <div
+            class="button_upload flex items-center justify-start gap-3 p-4 text-[#FF3D00] border-0 transition duration-500 hover:bg-[#88965E80] rounded-lg w-[290px] h-[50px] mt-1 ml-3"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <a class="font-semibold text-[18px]" href="/logout">Logout</a>
+          </div>
         </div>
       </div>
-      <!-- To-do-list -->
-      <div class="flex flex-col font-['Inter'] mt-[75px] ml-[145px]">
+
+      <!-- Main Content -->
+      <div class="flex flex-col font-['Inter'] mt-[75px] ml-[145px] flex-1 pr-10">
         <div>
           <span class="font-[600] text-[27px]">Payments</span>
         </div>
 
+        <!-- Error/Success Messages -->
+        <% if (error) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4">
+          <%= error %>
+        </div>
+        <% } %>
+        <% if (success) { %>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-4">
+          <%= success %>
+        </div>
+        <% } %>
+
         <!-- Table Container with Border Radius -->
-        <div
-          class="mt-11 rounded-tl-[13.5px] rounded-tr-[13.5px] overflow-hidden border border-gray-200"
-        >
+        <% if (books && books.length > 0) { %>
+        <div class="mt-11 rounded-tl-[13.5px] rounded-tr-[13.5px] overflow-hidden border border-gray-200">
           <table id="table" class="min-w-full border-collapse">
             <thead class="bg-[#88965E80] text-gray-800 font-semibold">
               <tr>
@@ -90,43 +99,88 @@
                 <th class="px-8 py-3 border text-center">Author Name</th>
                 <th class="px-8 py-3 border text-center">Category</th>
                 <th class="px-8 py-3 border text-center">Price</th>
-                <th class="px-8 py-3 border text-center">Actions</th>
+                <th class="px-8 py-3 border text-center">Rented On</th>
+                <th class="px-8 py-3 border text-center">Status</th>
               </tr>
             </thead>
-            <<tbody class="bg-white">
-  <% books.forEach((book, index) => { %>
-    <tr class="hover:bg-gray-50">
-      <td class="px-4 py-3 border"><%= index + 1 %></td>
-      <td class="px-4 py-3 border text-center"><%= book.bookName %></td>
-      <td class="px-4 py-3 border text-center"><%= book.author %></td>
-      <td class="px-4 py-3 border text-center"><%= book.genre %></td>
-      <td class="px-4 py-3 border text-center">Rs <%= book.price %></td>
-      <td class="px-4 py-3 border text-center">
-        <div id="btnContainer">
-          <% if (book.status === "rented") { %>
-            <button
-              class="text-[#4CAF50] bg-[#4caf4f46] hover:bg-[#84c186a3] px-[15px] py-1 rounded mr-2 text-center"
-            >
-              Success
-            </button>
-          <% } else if (book.status === "overdue") { %>
-            <button
-              class="text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded mr-2"
-            >
-              Overdue
-            </button>
-          <% } %>
-        </div>
-      </td>
-    </tr>
-  <% }) %>
-</tbody>
-
-
+            <tbody class="bg-white">
+              <% books.forEach((book, index) => { %>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-3 border"><%= index + 1 %></td>
+                <td class="px-4 py-3 border text-center"><%= book.bookName %></td>
+                <td class="px-4 py-3 border text-center"><%= book.author %></td>
+                <td class="px-4 py-3 border text-center"><%= book.genre %></td>
+                <td class="px-4 py-3 border text-center">Rs <%= book.price %></td>
+                <td class="px-4 py-3 border text-center">
+                  <%= book.rentedAt ? new Date(book.rentedAt).toLocaleDateString('en-GB', { 
+                    day: '2-digit', 
+                    month: 'short', 
+                    year: 'numeric' 
+                  }) : 'N/A' %>
+                </td>
+                <td class="px-4 py-3 border text-center">
+                  <div id="btnContainer">
+                    <% if (book.status === "rented") { %>
+                    <button
+                      class="text-[#4CAF50] bg-[#4caf4f46] hover:bg-[#84c186a3] px-[15px] py-1 rounded mr-2 text-center"
+                    >
+                      Success
+                    </button>
+                    <% } else if (book.status === "overdue") { %>
+                    <button
+                      class="text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded mr-2"
+                    >
+                      Overdue
+                    </button>
+                    <% } %>
+                  </div>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
           </table>
         </div>
+        <% } else { %>
+        <!-- Empty State -->
+        <div class="mt-11 flex flex-col items-center justify-center py-16 border-2 border-dashed border-gray-300 rounded-lg">
+          <i class="fa-solid fa-receipt text-gray-400 text-6xl mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">No Payments Yet</h3>
+          <p class="text-gray-500 mb-6">You haven't rented any books yet.</p>
+          <a
+            href="/browse"
+            class="bg-[#324A16] hover:bg-[#4f623a] text-white px-6 py-2 rounded-md transition"
+          >
+            Browse Books
+          </a>
+        </div>
+        <% } %>
+
+        <!-- Summary Section (if there are payments) -->
+        <% if (books && books.length > 0) { %>
+        <div class="mt-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h3 class="font-semibold text-lg mb-4">Payment Summary</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded border">
+              <p class="text-gray-600 text-sm">Total Rentals</p>
+              <p class="text-2xl font-bold text-[#324A16]"><%= books.length %></p>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-gray-600 text-sm">Active Rentals</p>
+              <p class="text-2xl font-bold text-green-600">
+                <%= books.filter(b => b.status === 'rented').length %>
+              </p>
+            </div>
+            <div class="bg-white p-4 rounded border">
+              <p class="text-gray-600 text-sm">Overdue Books</p>
+              <p class="text-2xl font-bold text-red-600">
+                <%= books.filter(b => b.status === 'overdue').length %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% } %>
       </div>
     </div>
   </body>
   <script src="script.js"></script>
-</html> 
+</html>

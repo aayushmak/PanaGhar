@@ -69,3 +69,32 @@ exports.handleBookUpload = (req, res) => {
     }
   });
 };
+
+const multer = require("multer");
+const path = require("path");
+
+// Storage config
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads"); // make sure this folder exists
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+  },
+});
+
+// File filter (optional)
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only JPEG, JPG, PNG files are allowed"), false);
+  }
+};
+
+// Multer upload middleware
+const upload = multer({ storage, fileFilter }).array("images", 4); // max 4 images

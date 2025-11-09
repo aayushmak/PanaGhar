@@ -27,6 +27,35 @@ const userSchema = new mongoose.Schema({
   confirmpassword: {
     type: String,
     required: true
+  },
+  gender: {
+    type: String,
+    enum: ['male', 'female', ''],
+    default: ''
+  },
+  province: {
+    type: String,
+    default: ''
+  },
+  citizenshipId: {
+    type: String,
+    default: ''
+  },
+  bankAccount: {
+    type: String,
+    default: ''
+  },
+  bankName: {
+    type: String,
+    default: ''
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
   }
 });
 
@@ -37,6 +66,11 @@ userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
   this.confirmpassword = undefined; // Don't store confirm password
+  next();
+});
+// Update the updatedAt field before saving
+userSchema.pre("save", function(next) {
+  this.updatedAt = Date.now();
   next();
 });
 

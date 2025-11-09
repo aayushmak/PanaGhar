@@ -29,7 +29,7 @@
     <!-- NAVBAR -->
     <nav class="p-3 flex bg-[#324A16] justify-between items-center">
       <!-- Logo -->
-      <a href="#" class="flex items-center flex-1">
+      <a href="/" class="flex items-center flex-1">
         <img
           src="assets/landing_logo.png"
           alt="PanaGhar Logo"
@@ -39,26 +39,19 @@
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex gap-[75px]">
-        <a
-          href="/landingPageUser"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Home</a
         >
-        <a href="/browse" class="font-poppins text-[16px] text-[#b4cb6e]">Browse</a>
-        <a
-          href="/rental"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/browse" class="font-poppins text-[16px] text-[#b4cb6e]"
+          >Browse</a
         >
+        <a href="/rental" class="font-poppins text-[16px] hover:text-[#b4cb6e]">
           My Rentals
         </a>
-        <a
-          href="/about"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >About Us</a
         >
-        <a
-          href="/team"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/team" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Our Team</a
         >
       </div>
@@ -77,9 +70,14 @@
             class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"
           ></i
         ></a>
-        <a href="/dashboard"
-          ><i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i
-        ></a>
+        <% if (user) { %>
+        <a href="/dashboard" class="flex items-center space-x-2">
+          <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+          <h2>Welcome, <%= user.firstname %>!</h2>
+        </a>
+        <% } else { %>
+        <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+        <% } %>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -103,26 +101,22 @@
           </button>
         </div>
         <div class="mt-6 flex flex-col space-y-4">
-          <a
-            href="landing-page-user.html"
-            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          <a href="/" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
             >Home</a
           >
-          <a href="#" class="font-poppins text-[16px] text-[#b4cb6e]">Browse</a>
+          <a href="/browse" class="font-poppins text-[16px] text-[#b4cb6e]"
+            >Browse</a
+          >
           <a
-            href="my-rental.html"
+            href="/rental"
             class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >
             My Rentals
           </a>
-          <a
-            href="about-us.html"
-            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
             >About Us</a
           >
-          <a
-            href="team.html"
-            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          <a href="/team" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
             >Our Team</a
           >
         </div>
@@ -176,10 +170,10 @@
               class="w-full rounded-md p-2 bg-[#FEFAE0] border border-red-100 text-black"
             >
               <option value="all">All</option>
-              <option value="excellent">Excellent</option>
-              <option value="good">Good</option>
-              <option value="average">Average</option>
-              <option value="bad">Bad</option>
+              <option value="Excellent">Excellent</option>
+              <option value="Good">Good</option>
+              <option value="Average">Average</option>
+              <option value="Bad">Bad</option>
             </select>
           </div>
 
@@ -191,12 +185,12 @@
               class="w-full rounded-md p-2 bg-[#FEFAE0] border border-red-100 text-black"
             >
               <option value="all">All</option>
-              <option value="fiction">Fiction</option>
-              <option value="non-fiction">Non-fiction</option>
-              <option value="horror">Horror</option>
-              <option value="psychology">Psychology</option>
-              <option value="history">History</option>
-              <option value="children">Children</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non fiction">Non-fiction</option>
+              <option value="Horror">Horror</option>
+              <option value="Psychology">Psychology</option>
+              <option value="History">History</option>
+              <option value="Children">Children</option>
             </select>
           </div>
 
@@ -258,45 +252,42 @@
             </div>
           </section>
 
-          <!-- Image Grid -->
+          <!-- Image Grid-->
           <div
-  id="product-grid"
-  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center ml-[120px] mt-[40px]"
->
-  <% if (books && books.length > 0) { %>
-    <% books.forEach(book => { %>
-      <a href="/books/<%= book._id %>" class="no-underline">
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[10rem]
-          transition-transform ease-in-out duration-[400ms] hover:scale-[1.03]
-          hover:shadow-[3px_5px_5px_rgba(1,1,1,0.4)]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-          data-genre="<%= book.genre %>"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover mb-3 rounded-t-md"
-            src="<%= book.imageUrls && book.imageUrls.length ? book.imageUrls[0] : '/uploads/default-book.png' %>"
-            alt="<%= book.bookName %> book cover"
-          />
-          <span class="text-black text-[16px] font-medium w-[90%] text-center">
-            <%= book.bookName %>
-          </span>
-          <span class="text-[#BC6C25] text-[14px] w-[90%] text-center">
-            <%= book.author %>
-          </span>
-          <span class="text-[#324A16] font-semibold">
-            Rs <%= book.price %>
-          </span>
-        </div>
-      </a>
-    <% }) %>
-  <% } else { %>
-    <div class="col-span-full text-center mt-10">
-      <p class="text-gray-500 text-lg">No books found.</p>
-    </div>
-  <% } %>
-</div>
-
+            id="product-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center ml-[120px] mt-[40px]"
+          >
+            <% if (books && books.length > 0) { %> <% books.forEach(book => { %>
+            <a href="/books/<%= book._id %>" class="no-underline">
+              <div
+                data-genre="<%= book.genre %>"
+                data-condition="<%= book.condition %>"
+                data-availability="<%= book.status %>"
+              >
+                <img
+                  class="h-[260px] w-[190px] object-cover mb-3 rounded-t-md"
+                  src="<%= book.imageUrls && book.imageUrls.length ? book.imageUrls[0] : '/uploads/default-book.png' %>"
+                  alt="<%= book.bookName %> book cover"
+                />
+                <span
+                  class="text-black text-[16px] font-medium w-[90%] text-center"
+                >
+                  <%= book.bookName %> </span
+                ><br />
+                <span class="text-[#BC6C25] text-[14px] w-[90%] text-center">
+                  <%= book.author %> </span
+                ><br />
+                <span class="text-[#324A16] font-semibold">
+                  Rs <%= book.price %>
+                </span>
+              </div>
+            </a>
+            <% }) %> <% } else { %>
+            <div class="col-span-full text-center mt-10">
+              <p class="text-gray-500 text-lg">No books found.</p>
+            </div>
+            <% } %>
+          </div>
 
           <div
             id="no-results"
@@ -380,255 +371,111 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-      function handleMenu() {
-        const navDialog = document.getElementById("nav-dialog");
-        const isHidden = navDialog.classList.contains("hidden");
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const productGrid = document.getElementById("product-grid");
+  const allProducts = Array.from(productGrid.querySelectorAll("a")); // Original products
+  const totalResultsEl = document.getElementById("total-results");
+  const showingFromEl = document.getElementById("showing-from");
+  const showingToEl = document.getElementById("showing-to");
+  const sortSelect = document.getElementById("sort");
+  const showSelect = document.getElementById("show");
+  const searchInput = document.getElementById("search");
+  const genreSelect = document.getElementById("genre-filter");
+  const conditionSelect = document.getElementById("condition-filter");
+  const availabilitySelect = document.getElementById("availability-filter");
+  const applyBtn = document.getElementById("apply-filter");
+  const noResultsEl = document.getElementById("no-results");
 
-        if (isHidden) {
-          navDialog.classList.remove("hidden");
-          setTimeout(() => {
-            navDialog.classList.remove("opacity-0", "-translate-y-5");
-          }, 10);
-        } else {
-          navDialog.classList.add("opacity-0", "-translate-y-5");
-          setTimeout(() => {
-            navDialog.classList.add("hidden");
-          }, 300);
-        }
+  let filteredProducts = [...allProducts];
+
+  // ========== FILTER FUNCTION ==========
+  function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    const selectedGenre = genreSelect.value.toLowerCase();
+    const selectedCondition = conditionSelect.value.toLowerCase();
+    const selectedAvailability = availabilitySelect.value.toLowerCase();
+
+    filteredProducts = allProducts.filter(link => {
+      const bookDiv = link.querySelector("div");
+      const title = bookDiv.querySelector("span.text-black")?.textContent.toLowerCase() || "";
+      const author = bookDiv.querySelector("span.text-\\[\\#BC6C25\\]")?.textContent.toLowerCase() || "";
+      
+      // Get and normalize data attributes
+      const genre = (bookDiv.dataset.genre || "").toLowerCase().trim();
+      const condition = (bookDiv.dataset.condition || "").toLowerCase().trim();
+      const availability = (bookDiv.dataset.availability || "available").toLowerCase().trim();
+
+      // Match logic
+      const matchesSearch = searchTerm === "" || title.includes(searchTerm) || author.includes(searchTerm);
+      const matchesGenre = selectedGenre === "all" || genre === selectedGenre;
+      const matchesCondition = selectedCondition === "all" || condition === selectedCondition;
+      const matchesAvailability = selectedAvailability === "all" || availability === selectedAvailability;
+
+      return matchesSearch && matchesGenre && matchesCondition && matchesAvailability;
+    });
+
+    sortProducts(sortSelect.value); // sort after filtering
+  }
+
+  // ========== SORT FUNCTION ==========
+  function sortProducts(method) {
+    filteredProducts.sort((a, b) => {
+      const bookA = a.querySelector("div");
+      const bookB = b.querySelector("div");
+
+      const titleA = bookA.querySelector("span.text-black")?.textContent || "";
+      const titleB = bookB.querySelector("span.text-black")?.textContent || "";
+      const priceA = parseFloat(bookA.querySelector("span.text-\\[\\#324A16\\]")?.textContent.replace("Rs ", "") || 0);
+      const priceB = parseFloat(bookB.querySelector("span.text-\\[\\#324A16\\]")?.textContent.replace("Rs ", "") || 0);
+
+      switch (method) {
+        case "Alphabetically, A-Z":
+          return titleA.toLowerCase().localeCompare(titleB.toLowerCase());
+        case "Alphabetically, Z-A":
+          return titleB.toLowerCase().localeCompare(titleA.toLowerCase());
+        case "Price: Low to High":
+          return priceA - priceB;
+        case "Price: High to Low":
+          return priceB - priceA;
+        default:
+          return 0;
       }
+    });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const links = document.querySelectorAll("#nav-menu a, #nav-dialog a");
-        const currentPath = window.location.pathname.split("/").pop();
-        links.forEach((link) => {
-          const href = link.getAttribute("href");
-          if (href === currentPath || href === "") {
-            link.classList.add("text-[#b4cb6e]");
-          } else {
-            link.classList.remove("text-[#b4cb6e]");
-          }
-        });
+    renderProducts();
+  }
 
-        const productGrid = document.getElementById("product-grid");
-        if (!productGrid) {
-          console.warn("No product grid found!");
-          return;
-        }
+  // ========== RENDER PRODUCTS ==========
+  function renderProducts() {
+    productGrid.innerHTML = "";
+    const showCount = showSelect.value === "all" ? filteredProducts.length : parseInt(showSelect.value);
+    let visibleCount = 0;
 
-        let products = Array.from(productGrid.children);
+    filteredProducts.forEach((link, index) => {
+      if (index < showCount) {
+        productGrid.appendChild(link);
+        visibleCount++;
+      }
+    });
 
-        const totalResultsEl = document.getElementById("total-results");
-        const showingFromEl = document.getElementById("showing-from");
-        const showingToEl = document.getElementById("showing-to");
+    showingFromEl.textContent = visibleCount === 0 ? 0 : 1;
+    showingToEl.textContent = visibleCount;
+    totalResultsEl.textContent = filteredProducts.length;
+    noResultsEl.classList.toggle("hidden", visibleCount > 0);
+  }
 
-        const sortSelect = document.getElementById("sort");
-        const showSelect = document.getElementById("show");
-        const searchInput = document.getElementById("search");
+  // ========== EVENT LISTENERS ==========
+  applyBtn.addEventListener("click", applyFilters);
+  searchInput.addEventListener("input", applyFilters);
+  sortSelect.addEventListener("change", () => sortProducts(sortSelect.value));
+  showSelect.addEventListener("change", renderProducts);
 
-        const totalResults = products.length;
-        if (totalResultsEl) totalResultsEl.textContent = totalResults;
+  // ========== INITIAL LOAD ==========
+  applyFilters();
+});
+</script>
 
-        function updateVisibleProducts(showCount) {
-          if (showCount === "all") {
-            products.forEach((product) => (product.style.display = ""));
-            if (showingFromEl)
-              showingFromEl.textContent = totalResults === 0 ? 0 : 1;
-            if (showingToEl) showingToEl.textContent = totalResults;
-          } else {
-            products.forEach((product, index) => {
-              product.style.display = index < showCount ? "" : "none";
-            });
-            if (showingFromEl)
-              showingFromEl.textContent = totalResults === 0 ? 0 : 1;
-            if (showingToEl)
-              showingToEl.textContent = Math.min(showCount, totalResults);
-          }
-        }
 
-        function sortProducts(method) {
-          let sortedProducts = [...products];
-
-          switch (method) {
-            case "Alphabetically, A-Z":
-              sortedProducts.sort((a, b) => {
-                const titleA =
-                  a
-                    .querySelector("span.font-medium")
-                    ?.textContent.toLowerCase() || "";
-                const titleB =
-                  b
-                    .querySelector("span.font-medium")
-                    ?.textContent.toLowerCase() || "";
-                return titleA.localeCompare(titleB);
-              });
-              break;
-
-            case "Alphabetically, Z-A":
-              sortedProducts.sort((a, b) => {
-                const titleA =
-                  a
-                    .querySelector("span.font-medium")
-                    ?.textContent.toLowerCase() || "";
-                const titleB =
-                  b
-                    .querySelector("span.font-medium")
-                    ?.textContent.toLowerCase() || "";
-                return titleB.localeCompare(titleA);
-              });
-              break;
-
-            case "Price: Low to High":
-              sortedProducts.sort((a, b) => {
-                const priceA = parseFloat(
-                  a
-                    .querySelector("span.font-semibold")
-                    ?.textContent.replace("Rs ", "") || "0"
-                );
-                const priceB = parseFloat(
-                  b
-                    .querySelector("span.font-semibold")
-                    ?.textContent.replace("Rs ", "") || "0"
-                );
-                return priceA - priceB;
-              });
-              break;
-
-            case "Price: High to Low":
-              sortedProducts.sort((a, b) => {
-                const priceA = parseFloat(
-                  a
-                    .querySelector("span.font-semibold")
-                    ?.textContent.replace("Rs ", "") || "0"
-                );
-                const priceB = parseFloat(
-                  b
-                    .querySelector("span.font-semibold")
-                    ?.textContent.replace("Rs ", "") || "0"
-                );
-                return priceB - priceA;
-              });
-              break;
-
-            default:
-              sortedProducts = products;
-          }
-
-          productGrid.innerHTML = "";
-          sortedProducts.forEach((product) => productGrid.appendChild(product));
-          products = sortedProducts;
-        }
-
-        let initialShowValue = showSelect?.value || "all";
-        let initialShowCount =
-          initialShowValue === "all" ? "all" : parseInt(initialShowValue);
-        updateVisibleProducts(initialShowCount);
-
-        showSelect?.addEventListener("change", () => {
-          const value = showSelect.value;
-          const showCount = value === "all" ? "all" : parseInt(value);
-          updateVisibleProducts(showCount);
-        });
-
-        sortSelect?.addEventListener("change", () => {
-          const sortMethod = sortSelect.value;
-          sortProducts(sortMethod);
-          const value = showSelect.value;
-          const showCount = value === "all" ? "all" : parseInt(value);
-          updateVisibleProducts(showCount);
-        });
-
-        searchInput?.addEventListener("input", () => {
-          const keyword = searchInput.value.toLowerCase().trim();
-          let visibleCount = 0;
-
-          products.forEach((product) => {
-            const title =
-              product
-                .querySelector("span.font-medium")
-                ?.textContent.toLowerCase() || "";
-            const match = title.includes(keyword);
-            product.style.display = match ? "" : "none";
-            if (match) visibleCount++;
-          });
-
-          showingFromEl.textContent = visibleCount === 0 ? 0 : 1;
-          showingToEl.textContent = visibleCount;
-          totalResultsEl.textContent = visibleCount;
-
-          // ✅ Show/hide "No results found" message
-          const noResultsEl = document.getElementById("no-results");
-          if (noResultsEl) {
-            noResultsEl.classList.toggle("hidden", visibleCount > 0);
-          }
-        });
-      });
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const searchInput = document.getElementById("search");
-        const genreSelect = document.getElementById("genre-filter");
-        const conditionSelect = document.getElementById("condition-filter");
-        const availabilitySelect = document.getElementById(
-          "availability-filter"
-        );
-
-        const applyBtn = document.getElementById("apply-filter");
-
-        const books = Array.from(
-          document.querySelectorAll("#product-grid > div")
-        );
-
-        function applyFilters() {
-          const searchTerm = searchInput.value.toLowerCase();
-          const selectedGenre = genreSelect.value.toLowerCase();
-          const selectedCondition = conditionSelect.value.toLowerCase();
-          const selectedAvailability = availabilitySelect.value.toLowerCase();
-
-          books.forEach((book) => {
-            const title = book
-              .querySelector("span:nth-of-type(1)")
-              .textContent.toLowerCase();
-            const author = book
-              .querySelector("span:nth-of-type(2)")
-              .textContent.toLowerCase();
-
-            // Custom attributes (added from EJS dynamically)
-            const genre = book.getAttribute("data-genre")?.toLowerCase() || "";
-            const condition =
-              book.getAttribute("data-condition")?.toLowerCase() || "";
-            const availability =
-              book.getAttribute("data-availability")?.toLowerCase() ||
-              "available";
-
-            let matchesSearch =
-              title.includes(searchTerm) || author.includes(searchTerm);
-            let matchesGenre =
-              selectedGenre === "all" || genre === selectedGenre;
-            let matchesCondition =
-              selectedCondition === "all" || condition === selectedCondition;
-            let matchesAvailability =
-              selectedAvailability === "all" ||
-              availability === selectedAvailability;
-
-            if (
-              matchesSearch &&
-              matchesGenre &&
-              matchesCondition &&
-              matchesAvailability
-            ) {
-              book.style.display = "flex";
-            } else {
-              book.style.display = "none";
-            }
-          });
-        }
-
-        // Apply filters on button click
-        applyBtn.addEventListener("click", applyFilters);
-
-        // Optional: Live search as user types
-        searchInput.addEventListener("input", applyFilters);
-      });
-    </script>
   </body>
 </html>

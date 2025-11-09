@@ -68,10 +68,14 @@
             class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"
           ></i
         ></a>
-        <a href="/dashboard"
-          ><i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+        <% if (user) { %>
+        <a href="/dashboard" class="flex items-center space-x-2">
+          <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
           <h2>Welcome, <%= user.firstname %>!</h2>
         </a>
+        <% } else { %>
+        <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+        <% } %>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -150,37 +154,37 @@
 
         <!-- Bottom-Centered Clickable Button -->
         <a
-          href="#"
+          href="/browse"
           class="absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-[#324A16] text-white h-[60px] w-[200px] flex items-center justify-center rounded-[40px] shadow-lg hover:bg-[#3d5d1c] transition text-lg font-medium"
         >
           Browse Books
         </a>
       </div>
       <!-- Search Bar Centered Below Button -->
-      <div class="absolute -bottom-7 left-1/2 transform -translate-x-1/2">
+      <!-- <div class="absolute -bottom-7 left-1/2 transform -translate-x-1/2">
         <div
           class="flex items-center rounded-full border bg-white px-4 py-2 shadow-md w-[780px]"
-        >
+        > -->
           <!-- Menu Icon -->
-          <div class="text-green-900 mr-4">
+          <!-- <div class="text-green-900 mr-4">
             <i class="fa-solid fa-bars text-black text-xl"></i>
-          </div>
+          </div> -->
 
           <!-- Search Input -->
-          <input
+          <!-- <input
             type="text"
             placeholder="Search Books"
             class="flex-grow bg-transparent text-gray-600 placeholder-gray-400 outline-none"
-          />
+          /> -->
 
           <!-- Search Button -->
-          <button
+          <!-- <button
             class="ml-4 bg-green-900 rounded-full w-10 h-10 flex items-center justify-center"
           >
             <i class="fa-solid fa-magnifying-glass text-white text-base"></i>
           </button>
         </div>
-      </div>
+      </div> -->
       <!-- Popular-Search -->
       <section class="flex justify-center gap-7 mt-[70px]">
         <div>
@@ -251,182 +255,43 @@
 
           <!-- Slides Wrapper -->
           <div
-            id="slideWrapper"
-            class="flex transition-transform duration-500 ease-in-out w-[400%] h-full"
-          >
-            <!-- Repeat these .slide divs for each book -->
-            <!-- Slide 1 -->
-            <div class="slide w-full flex-shrink-0 flex pl-[120px] items-start">
-              <img
-                class="h-[550px] w-[450px] object-cover mt-[120px]"
-                src="assets/landing-2.png"
-                alt="book"
-              />
-              <div class="ml-[120px]">
-                <h1
-                  class="text-white text-[50px] font-bold mt-[90px] mb-[60px]"
-                >
-                  Featured Book
-                </h1>
-                <div
-                  class="w-[160px] border-2 border-[#DDA15E] mb-[15px]"
-                ></div>
-                <span class="text-[16px] font-medium"
-                  >BASED ON YOUR RECENT SEARCHES</span
-                >
-                <h1
-                  class="text-[#1B1F13] font-semibold text-[40px] mt-[20px] mb-[25px]"
-                >
-                  Birds Gonna Be Happy
-                </h1>
-                <span class="text-[16px] font-medium"
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Nesciunt
-                  deserunt laboriosam iste molestiae quod voluptatem,<br />omnis
-                  molestias dolorum consequuntur accusantium?</span
-                >
-                <span
-                  class="block font-[600] text-[25px] text-[#283618] mt-[20px]"
-                  >Rs 500</span
-                >
-                <a
-                  class="inline-block border-2 p-[15px] px-[25px] border-[#324A16] opacity-95 rounded-2xl text-[#324A16] mt-[60px]"
-                  href="details-page.html"
-                >
-                  VIEW MORE
-                  <i class="text-[#324A16] fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
+  id="slideWrapper"
+  class="flex transition-transform duration-500 ease-in-out w-[400%] h-full"
+>
+  <% featuredBooks.forEach((book) => { %>
+    <div class="slide w-full flex-shrink-0 flex pl-[120px] items-start">
+      <img
+        class="h-[550px] w-[450px] object-cover mt-[120px]"
+        src="<%= book.imageUrls || 'assets/default-book.png' %>"
+        alt="<%= book.bookName %>"
+      />
+      <div class="ml-[120px]">
+        <h1 class="text-white text-[50px] font-bold mt-[90px] mb-[60px]">
+          Featured Book
+        </h1>
+        <div class="w-[160px] border-2 border-[#DDA15E] mb-[15px]"></div>
+        <span class="text-[16px] font-medium">BASED ON YOUR RECENT SEARCHES</span>
+        <h1 class="text-[#1B1F13] font-semibold text-[40px] mt-[20px] mb-[25px]">
+          <%= book.bookName %>
+        </h1>
+        <span class="text-[16px] font-medium">
+          <%= book.description %>
+        </span>
+        <span class="block font-[600] text-[25px] text-[#283618] mt-[20px]">
+          Rs <%= book.price %>
+        </span>
+        <a
+          class="inline-block border-2 p-[15px] px-[25px] border-[#324A16] opacity-95 rounded-2xl text-[#324A16] mt-[60px]"
+          href="/book-details/<%= book._id %>"
+        >
+          VIEW MORE
+          <i class="text-[#324A16] fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  <% }) %>
+</div>
 
-            <!-- Slide 2 -->
-            <div class="slide w-full flex-shrink-0 flex pl-[120px] items-start">
-              <img
-                class="h-[550px] w-[450px] object-cover mt-[120px]"
-                src="assets/landingbook-1.png"
-                alt="book"
-              />
-              <div class="ml-[120px]">
-                <h1
-                  class="text-white text-[50px] font-bold mt-[90px] mb-[60px]"
-                >
-                  Featured Book
-                </h1>
-                <div
-                  class="w-[160px] border-2 border-[#DDA15E] mb-[15px]"
-                ></div>
-                <span class="text-[16px] font-medium"
-                  >BASED ON YOUR RECENT SEARCHES</span
-                >
-                <h1
-                  class="text-[#1B1F13] font-semibold text-[40px] mt-[20px] mb-[25px]"
-                >
-                  Birds Gonna Be Happy
-                </h1>
-                <span class="text-[16px] font-medium"
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Nesciunt
-                  deserunt laboriosam iste molestiae quod voluptatem,<br />omnis
-                  molestias dolorum consequuntur accusantium?</span
-                >
-                <span
-                  class="block font-[600] text-[25px] text-[#283618] mt-[20px]"
-                  >Rs 500</span
-                >
-                <a
-                  class="inline-block border-2 p-[15px] px-[25px] border-[#324A16] opacity-95 rounded-2xl text-[#324A16] mt-[60px]"
-                  href="details-page.html"
-                >
-                  VIEW MORE
-                  <i class="text-[#324A16] fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="slide w-full flex-shrink-0 flex pl-[120px] items-start">
-              <img
-                class="h-[550px] w-[450px] object-cover mt-[120px]"
-                src="assets/landing-3.png"
-                alt="book"
-              />
-              <div class="ml-[120px]">
-                <h1
-                  class="text-white text-[50px] font-bold mt-[90px] mb-[60px]"
-                >
-                  Featured Book
-                </h1>
-                <div
-                  class="w-[160px] border-2 border-[#DDA15E] mb-[15px]"
-                ></div>
-                <span class="text-[16px] font-medium"
-                  >BASED ON YOUR RECENT SEARCHES</span
-                >
-                <h1
-                  class="text-[#1B1F13] font-semibold text-[40px] mt-[20px] mb-[25px]"
-                >
-                  Birds Gonna Be Happy
-                </h1>
-                <span class="text-[16px] font-medium"
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Nesciunt
-                  deserunt laboriosam iste molestiae quod voluptatem,<br />omnis
-                  molestias dolorum consequuntur accusantium?</span
-                >
-                <span
-                  class="block font-[600] text-[25px] text-[#283618] mt-[20px]"
-                  >Rs 500</span
-                >
-                <a
-                  class="inline-block border-2 p-[15px] px-[25px] border-[#324A16] opacity-95 rounded-2xl text-[#324A16] mt-[60px]"
-                  href="details-page.html"
-                >
-                  VIEW MORE
-                  <i class="text-[#324A16] fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="slide w-full flex-shrink-0 flex pl-[120px] items-start">
-              <img
-                class="h-[550px] w-[450px] object-cover mt-[120px]"
-                src="assets/landing-1.png"
-                alt="book"
-              />
-              <div class="ml-[120px]">
-                <h1
-                  class="text-white text-[50px] font-bold mt-[90px] mb-[60px]"
-                >
-                  Featured Book
-                </h1>
-                <div
-                  class="w-[160px] border-2 border-[#DDA15E] mb-[15px]"
-                ></div>
-                <span class="text-[16px] font-medium"
-                  >BASED ON YOUR RECENT SEARCHES</span
-                >
-                <h1
-                  class="text-[#1B1F13] font-semibold text-[40px] mt-[20px] mb-[25px]"
-                >
-                  Birds Gonna Be Happy
-                </h1>
-                <span class="text-[16px] font-medium"
-                  >Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />Nesciunt
-                  deserunt laboriosam iste molestiae quod voluptatem,<br />omnis
-                  molestias dolorum consequuntur accusantium?</span
-                >
-                <span
-                  class="block font-[600] text-[25px] text-[#283618] mt-[20px]"
-                  >Rs 500</span
-                >
-                <a
-                  class="inline-block border-2 p-[15px] px-[25px] border-[#324A16] opacity-95 rounded-2xl text-[#324A16] mt-[60px]"
-                  href="details-page.html"
-                >
-                  VIEW MORE
-                  <i class="text-[#324A16] fa-solid fa-arrow-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
@@ -442,66 +307,23 @@
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-[120px] mb-[60px]"
       >
+        <% topBooks.forEach(book => { %>
         <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[7rem]"
           style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
         >
           <img
             class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-1.png"
-            alt="Simple way of piece life book cover"
+            src="<%= book.imageUrls || 'assets/default-book.png' %>"
+            alt="<%= book.bookName%>"
           />
           <span class="text-black text-[16px] font-medium"
-            >Simple way of piece life</span
+            ><%= book.bookName %></span
           >
-          <span class="text-[#BC6C25] text-[14px]">Armor Ramsey</span>
-          <span class="text-[#324A16] font-semibold">Rs 250</span>
+          <span class="text-[#BC6C25] text-[14px]"><%= book.author %></span>
+          <span class="text-[#324A16] font-semibold">Rs <%= book.price %></span>
         </div>
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-2.png"
-            alt="Simple way of piece life book cover"
-          />
-          <span class="text-black text-[16px] font-medium"
-            >Great travel at desert</span
-          >
-          <span class="text-[#BC6C25] text-[14px]">Sanchit Howdy</span>
-          <span class="text-[#324A16] font-semibold">Rs 430</span>
-        </div>
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-3.png"
-            alt="Simple way of piece life book cover"
-          />
-          <span class="text-black text-[16px] font-medium"
-            >The lady beauty Scarlett</span
-          >
-          <span class="text-[#BC6C25] text-[14px]">Arthur Doyle</span>
-          <span class="text-[#324A16] font-semibold">Rs 350</span>
-        </div>
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-2.png"
-            alt="Simple way of piece life book cover"
-          />
-          <span class="text-black text-[16px] font-medium"
-            >Simple way of piece life</span
-          >
-          <span class="text-[#BC6C25] text-[14px]">Armor Ramsey</span>
-          <span class="text-[#324A16] font-semibold">Rs 250</span>
-        </div>
+        <% }) %>
       </div>
     </section>
     <section class="mt-[60px] mb-[30px]">

@@ -104,101 +104,31 @@
               </tr>
             </thead>
             <tbody class="bg-white">
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 border">1</td>
-                <td class="px-4 py-3 border text-center">
-                  Mystery of the Lost Island
-                </td>
-                <td class="px-4 py-3 border text-center">Jane Smith</td>
-                <td class="px-4 py-3 border text-center">Mystery</td>
-                <td class="px-4 py-3 border text-center">Rs 500</td>
-                <td class="px-4 py-3 border text-center">
-                  <div id="btnContainer">
-                    <div class="flex justify-center items-center space-x-2">
-                      <button
-                        class="editBtn text-blue-600 bg-blue-100 hover:bg-blue-200 px-3 py-1 rounded"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        class="deleteBtn text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 border">2</td>
-                <td class="px-4 py-3 border text-center">Learning React</td>
-                <td class="px-4 py-3 border text-center">Alex Johnson</td>
-                <td class="px-4 py-3 border text-center">Technology</td>
-                <td class="px-4 py-3 border text-center">Rs 500</td>
-                <td class="px-4 py-3 border text-center">
-                  <div id="btnContainer">
-                    <div class="flex justify-center items-center space-x-2">
-                      <button
-                        class="editBtn text-blue-600 bg-blue-100 hover:bg-blue-200 px-3 py-1 rounded"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        class="deleteBtn text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 border">3</td>
-                <td class="px-4 py-3 border text-center">Cooking Made Easy</td>
-                <td class="px-4 py-3 border text-center">Emily Clark</td>
-                <td class="px-4 py-3 border text-center">Cooking</td>
-                <td class="px-4 py-3 border text-center">Rs 500</td>
-                <td class="px-4 py-3 border text-center">
-                  <div id="btnContainer">
-                    <div class="flex justify-center items-center space-x-2">
-                      <button
-                        class="editBtn text-blue-600 bg-blue-100 hover:bg-blue-200 px-3 py-1 rounded"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        class="deleteBtn text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="px-4 py-3 border">4</td>
-                <td class="px-4 py-3 border text-center">Echoes of the Past</td>
-                <td class="px-4 py-3 border text-center">Michael Brown</td>
-                <td class="px-4 py-3 border text-center">Historical Fiction</td>
-                <td class="px-4 py-3 border text-center">Rs 500</td>
-                <td class="px-4 py-3 border text-center">
-                  <div id="btnContainer">
-                    <div class="flex justify-center items-center space-x-2">
-                      <button
-                        class="editBtn text-blue-600 bg-blue-100 hover:bg-blue-200 px-3 py-1 rounded"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        class="deleteBtn text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+  <% if (books.length === 0) { %>
+    <tr>
+      <td colspan="6" class="text-center py-4 text-gray-500">
+        No books uploaded yet.
+      </td>
+    </tr>
+  <% } else { %>
+    <% books.forEach((book, index) => { %>
+      <tr class="hover:bg-gray-50" data-book-id="<%= book._id %>">
+        <td class="px-4 py-3 border"><%= index + 1 %></td>
+        <td class="px-4 py-3 border text-center"><%= book.bookName %></td>
+        <td class="px-4 py-3 border text-center"><%= book.author %></td>
+        <td class="px-4 py-3 border text-center"><%= book.category %></td>
+        <td class="px-4 py-3 border text-center">Rs <%= book.price %></td>
+        <td class="px-4 py-3 border text-center">
+          <div class="flex justify-center items-center space-x-2">
+            <button class="editBtn text-blue-600 bg-blue-100 hover:bg-blue-200 px-3 py-1 rounded">Edit</button>
+            <button class="deleteBtn text-red-600 bg-red-100 hover:bg-red-200 px-3 py-1 rounded">Delete</button>
+          </div>
+        </td>
+      </tr>
+    <% }) %>
+  <% } %>
+</tbody>
+
           </table>
         </div>
         <!-- Add this above your table inside the container where your table is -->

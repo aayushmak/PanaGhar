@@ -29,7 +29,7 @@
       class="fixed top-0 left-0 right-0 z-50 bg-[#324A16] p-3 flex flex-wrap justify-between items-center shadow-md"
     >
       <!-- Logo -->
-      <a href="#" id="brand" class="flex gap-2 items-center flex-1">
+      <a href="/" id="brand" class="flex gap-2 items-center flex-1">
         <img
           class="w-[140px] sm:w-[160px] md:w-[180px] lg:w-[190px] h-[50px] sm:h-[55px] md:h-[59px] ml-[10px] sm:ml-[30px] lg:ml-[50px] mb-1.5"
           src="assets/landing_logo.png"
@@ -40,25 +40,25 @@
       <!-- Desktop Menu -->
       <div id="nav-menu" class="hidden lg:flex gap-8 xl:gap-[75px]">
         <a
-          href="landing-page-user.html"
+          href="/"
           class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Home</a
         >
-        <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/browse" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Browse</a
         >
         <a
-          href="my-rental.html"
+          href="/rental"
           class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >My Rentals</a
         >
         <a
-          href="about-us.html"
+          href="/about"
           class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >About Us</a
         >
         <a
-          href="team.html"
+          href="/team"
           class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Our Team</a
         >
@@ -69,15 +69,21 @@
         <button
           class="flex text-lg font-medium font-serif gap-6 xl:gap-[25px] items-center pr-6 xl:pr-10"
         >
-          <a href="favourite-page.html"
+          <a href="/favourite"
             ><i class="fa-regular fa-heart hover:text-[#b4cb6e]"></i
           ></a>
-          <a href="billing_page.html"
+          <a href="/billing"
             ><i class="fa-solid fa-cart-shopping text-[#b4cb6e]"></i
           ></a>
-          <a href="dashboard.html"
-            ><i class="fa-solid fa-user hover:text-[#b4cb6e]"></i
-          ></a>
+          <% if (user) { %>
+  <a href="/dashboard" class="flex items-center space-x-2">
+    <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+    <h2>Welcome, <%= user.firstname %>!</h2>
+  </a>
+<% } else { %>
+  <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+<% } %>
+
         </button>
       </div>
       <!-- Mobile Menu -->
@@ -106,38 +112,38 @@
 
         <div class="mt-6 flex flex-col">
           <a
-            href="landingPageUser.html"
+            href="/"
             class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >Home</a
           >
-          <a href="#" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+          <a href="/browse" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >Browse</a
           >
           <a
-            href="myRentals.html"
+            href="/rental"
             class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >My Rentals</a
           >
           <a
-            href="aboutUs.html"
+            href="/about"
             class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >About Us</a
           >
-          <a href="team.html" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
+          <a href="/team" class="font-poppins hover:text-[#b4cb6e] m-3 p-3"
             >Our Team</a
           >
           <div class="mt-[20px] gap-4">
-            <a href="favouritePage.html"
+            <a href="/favourite"
               ><i
                 class="fa-regular fa-heart ml-5 text-[22px] hover:text-[#b4cb6e]"
               ></i
             ></a>
-            <a href="billingPage.html"
+            <a href="/billing"
               ><i
                 class="fa-solid fa-cart-shopping ml-5 text-[22px] hover:text-[#b4cb6e]"
               ></i
             ></a>
-            <a href="userDashboard.html"
+            <a href="/dashboard"
               ><i
                 class="fa-solid fa-user ml-5 text-[22px] hover:text-[#b4cb6e]"
               ></i
@@ -262,18 +268,14 @@
               <span>Rs <span id="order-total">650</span></span>
             </div>
 
-            <button
+
+<a href="/esewa/pay/<%= book._id %>">
+  <button
               id="checkout"
               class="mt-4 w-full bg-black text-white font-bold py-2 rounded hover:text-[#b4cb6e]"
             >
               Checkout
             </button>
-            <a href="/esewa/pay/<%= book._id %>">
-  <button
-    class="bg-green-600 text-white px-5 py-2 rounded-md hover:bg-green-700 transition"
-  >
-    Pay with eSewa
-  </button>
 </a>
 
           </div>

@@ -11,7 +11,10 @@ const session = require("express-session");
 const publicRoutes = require("./routes/publicRoutes");
 const authRoutes = require("./routes/authRoutes");
 const bookRoutes = require("./routes/bookRoutes");
-const rentalRoutes = require("./routes/rentalRoutes")
+const rentalRoutes = require("./routes/rentalRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes")
+const paymentRoutes = require("./routes/paymentRoutes")
+
 
 // Initialize Express
 const app = express();
@@ -50,6 +53,8 @@ app.use("/", publicRoutes);
 app.use("/", authRoutes);
 app.use("/", bookRoutes);
 app.use("/", rentalRoutes)
+app.use("/", dashboardRoutes)
+app.use("/", paymentRoutes)
 
 app.use(express.static("public")); // or "assets" depending on your folder
 

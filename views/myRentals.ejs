@@ -48,8 +48,14 @@
       <div class="hidden lg:flex flex-1 justify-end pr-10 gap-[25px] text-lg font-serif">
         <i class="fa-regular fa-heart hover:text-[#b4cb6e] cursor-pointer"></i>
         <i class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"></i>
+<% if (user) { %>
+        <a href="/dashboard" class="flex items-center space-x-2">
+          <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+          <h2>Welcome, <%= user.firstname %>!</h2>
+        </a>
+        <% } else { %>
         <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
-      </div>
+        <% } %>      </div>
 
       <!-- Mobile Menu Button -->
       <button class="p-2 lg:hidden" onclick="handleMenu()">
@@ -112,12 +118,12 @@
                   <!-- Left -->
                   <div class="flex items-center w-[50%]">
                     <img
-                      src="<%= book.image || '/assets/default-book.png' %>"
-                      alt="<%= book.title %>"
+                      src="<%= book.imageUrls || '/assets/default-book.png' %>"
+                      alt="<%= book.bookName %>"
                       class="h-[96px] w-[67px] mr-4 object-cover"
                     />
                     <div class="flex flex-col justify-center space-y-1">
-                      <span class="text-black font-medium"><%= book.title %></span>
+                      <span class="text-black font-medium"><%= book.bookName %></span>
                       <span class="text-[#71717A] font-medium"><%= book.author || 'Unknown Author' %></span>
                       <div class="text-[#3F3F46]">
                         <i class="fa-solid fa-star text-yellow-500"></i>

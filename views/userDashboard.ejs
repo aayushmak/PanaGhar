@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PanaGhar Login</title>
+    <title>PanaGhar - Dashboard</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -29,14 +29,16 @@
         class="w-full lg:w-[320px] bg-[#efeeee] border-r border-[#868686] p-6 lg:relative transform transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0"
       >
         <!-- Logo -->
-        <img
+        <a href="/">
+          <img
           src="assets/green_logo.png"
           alt="Logo"
           class="mb-6 max-w-full h-auto"
         />
+        </a>
         <nav class="space-y-2">
           <a
-            href="/dashbaord"
+            href="/dashboard"
             class="flex items-center gap-3 px-4 py-2 rounded-lg bg-[#88965E80] text-[#52525B] font-semibold"
           >
             <i class="fa-solid fa-users"></i> Dashboard
@@ -86,6 +88,18 @@
           </h1>
         </div>
 
+        <!-- Error/Success Messages -->
+        <% if (error) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <%= error %>
+        </div>
+        <% } %>
+        <% if (success) { %>
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+          <%= success %>
+        </div>
+        <% } %>
+
         <!-- Profile Section -->
         <div
           class="flex flex-col sm:flex-row items-start sm:items-center mb-12 gap-4"
@@ -100,24 +114,30 @@
             />
           </div>
           <div class="flex-1">
-            <p class="text-[#1B1F13] font-semibold text-lg sm:text-xl">
-              PanaGhar
-            </p>
+            <% if (user) { %>
+  <p class="text-[#1B1F13] font-semibold text-lg sm:text-xl">
+    <%= user.firstname %> <%= user.lastname || '' %>
+  </p>
+<% } else { %>
+  <p class="text-[#1B1F13] font-semibold text-lg sm:text-xl">Guest</p>
+<% } %>
+
             <a
-              href="mailto:panaghar@gmail.com"
+              href="mailto:<%= user.email %>"
               class="text-[#1B1F13] opacity-75 text-sm sm:text-base"
-              >panaghar@gmail.com</a
+              ><%= user.email %></a
             >
           </div>
-          <button
+          <a
+            href="/upload"
             class="bg-[#324A16] hover:bg-[#4f623a] text-white px-4 py-2 rounded-md transition"
           >
             Upload
-          </button>
+          </a>
         </div>
 
         <!-- Form Section -->
-        <form class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1100px]">
+        <form action="/dashboard" method="POST" class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1100px]">
           <!-- First Name -->
           <div>
             <label
@@ -129,6 +149,7 @@
               type="text"
               id="firstName"
               name="firstName"
+              value="<%= user.firstname || '' %>"
               class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2 focus:ring-[#60853651] focus:border-[#69804f4e]"
             />
           </div>
@@ -144,6 +165,7 @@
               type="text"
               id="lastName"
               name="lastName"
+              value="<%= user.lastname || '' %>"
               class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2 focus:ring-[#60853651] focus:border-[#69804f4e]"
             />
           </div>
@@ -153,16 +175,16 @@
             <label
               for="gender"
               class="block text-base font-medium text-[#283618] mb-1"
-              >Gender <span class="text-red-600">*</span></label
+              >Gender </label
             >
             <select
               id="gender"
               name="gender"
               class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
             >
-              <option value="" disabled selected>Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="" disabled <%= !user.gender ? 'selected' : '' %>>Select Gender</option>
+              <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+              <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
             </select>
           </div>
 
@@ -173,21 +195,21 @@
               class="block text-base font-medium text-[#283618] mb-1"
             >
               Country: <span class="font-semibold">Nepal</span>
-              <span class="text-red-600">*</span>
+              
             </label>
             <select
               id="province"
               name="province"
               class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
             >
-              <option value="" disabled selected>Select Province</option>
-              <option value="province-1">Province 1</option>
-              <option value="province-2">Province 2</option>
-              <option value="province-3">Province 3</option>
-              <option value="province-4">Province 4</option>
-              <option value="province-5">Province 5</option>
-              <option value="province-6">Province 6</option>
-              <option value="province-7">Province 7</option>
+              <option value="" disabled <%= !user.province ? 'selected' : '' %>>Select Province</option>
+              <option value="province-1" <%= user.province === 'province-1' ? 'selected' : '' %>>Province 1</option>
+              <option value="province-2" <%= user.province === 'province-2' ? 'selected' : '' %>>Province 2</option>
+              <option value="province-3" <%= user.province === 'province-3' ? 'selected' : '' %>>Province 3</option>
+              <option value="province-4" <%= user.province === 'province-4' ? 'selected' : '' %>>Province 4</option>
+              <option value="province-5" <%= user.province === 'province-5' ? 'selected' : '' %>>Province 5</option>
+              <option value="province-6" <%= user.province === 'province-6' ? 'selected' : '' %>>Province 6</option>
+              <option value="province-7" <%= user.province === 'province-7' ? 'selected' : '' %>>Province 7</option>
             </select>
           </div>
 
@@ -196,12 +218,13 @@
             <label
               for="id"
               class="block text-base font-medium text-[#283618] mb-1"
-              >ID <span class="text-red-600">*</span></label
+              >ID </label
             >
             <input
               type="text"
               id="id"
               name="id"
+              value="<%= user.citizenshipId || '' %>"
               class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
             />
           </div>
@@ -211,15 +234,26 @@
             <label
               for="phone"
               class="block text-base font-medium text-[#283618] mb-1"
-              >Phone Number <span class="text-red-600">*</span></label
+              >Phone Number </label
             >
             <input
               type="tel"
               id="phone"
               name="phone"
+              value="<%= user.phone || '' %>"
               placeholder="Enter your Phone Number"
               class="w-full max-w-[500px] border bg-[#F9F9F9] border-[#88965E] rounded px-4 py-2"
             />
+          </div>
+
+          <!-- Submit Button -->
+          <div class="lg:col-span-2">
+            <button
+              type="submit"
+              class="bg-[#324A16] hover:bg-[#4f623a] text-white px-6 py-2 rounded-md transition font-semibold"
+            >
+              Save Changes
+            </button>
           </div>
 
           <!-- Email + Bank Section Side-by-Side -->
@@ -244,12 +278,13 @@
                 <!-- Texts -->
                 <div>
                   <p class="text-[#1B1F13] text-[16px]">
-                    alexarawles@gmail.com
+                    <%= user.email %>
                   </p>
                   <p class="text-[#1B1F13] opacity-60 text-[14px] mb-4">
-                    1 month ago
+                    <%= accountAge %>
                   </p>
                   <button
+                    type="button"
                     class="text-[#324A16] bg-[#EDF1E2] text-[14px] font-medium px-4 py-2 rounded-full"
                   >
                     + Add Email Address
@@ -275,11 +310,14 @@
 
                 <!-- Texts -->
                 <div>
-                  <p class="text-[#1B1F13] text-[16px]">100402020145</p>
+                  <p class="text-[#1B1F13] text-[16px]">
+                    <%= user.bankAccount || 'Not provided' %>
+                  </p>
                   <p class="text-[#1B1F13] opacity-60 text-[14px] mb-4">
-                    Nabil Bank Pvt Ltd
+                    <%= user.bankName || 'No bank added' %>
                   </p>
                   <button
+                    type="button"
                     class="text-[#324A16] bg-[#EDF1E2] text-[14px] font-medium px-4 py-2 rounded-full"
                   >
                     + Add Another Bank

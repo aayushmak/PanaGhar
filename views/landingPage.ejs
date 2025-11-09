@@ -39,25 +39,17 @@
 
       <!-- Desktop Menu -->
       <div class="hidden lg:flex gap-[75px]">
-        <a
-          href="/"
-          class="font-poppins text-[16px] text-[#b4cb6e]"
-          >Home</a
-        >
+        <a href="/" class="font-poppins text-[16px] text-[#b4cb6e]">Home</a>
         <a href="/browse" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Browse</a
         >
         <a href="/login" class="font-poppins text-[16px] hover:text-[#b4cb6e]">
           My Rentals
         </a>
-        <a
-          href="/about"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >About Us</a
         >
-        <a
-          href="/team"
-          class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+        <a href="/team" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
           >Our Team</a
         >
       </div>
@@ -66,19 +58,26 @@
       <div
         class="hidden lg:flex flex-1 justify-end pr-10 gap-[25px] text-lg font-serif"
       >
-        <a href="#"
+        <a href="/favourite"
           ><i
             class="fa-regular fa-heart hover:text-[#b4cb6e] cursor-pointer"
           ></i
         ></a>
-        <a href="#"
+        <a href="/billing"
           ><i
             class="fa-solid fa-cart-shopping hover:text-[#b4cb6e] cursor-pointer"
           ></i
         ></a>
-        <a href="#"
-          ><i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i
-        ></a>
+        <% if (user) { %>
+        <a href="/dashboard" class="flex items-center space-x-2">
+          <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+          <h2>Welcome, <%= user.firstname %>!</h2>
+        </a>
+        <% } else { %>
+        <a href="/login">
+          <i class="fa-solid fa-user hover:text-[#b4cb6e] cursor-pointer"></i>
+        </a>
+        <% } %>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -102,25 +101,20 @@
           </button>
         </div>
         <div class="mt-6 flex flex-col space-y-4">
-          <a
-            href="/"
-            class="font-poppins text-[16px] text-[#b4cb6e]"
-            >Home</a
-          >
-          <a href="#" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          <a href="/" class="font-poppins text-[16px] text-[#b4cb6e]">Home</a>
+          <a href="/browse" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
             >Browse</a
           >
-          <a href="/login" class="font-poppins text-[16px] hover:text-[#b4cb6e]">
+          <a
+            href="/login"
+            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          >
             My Rentals
           </a>
-          <a
-            href="/about"
-            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          <a href="/about" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
             >About Us</a
           >
-          <a
-            href="/team"
-            class="font-poppins text-[16px] hover:text-[#b4cb6e]"
+          <a href="/team" class="font-poppins text-[16px] hover:text-[#b4cb6e]"
             >Our Team</a
           >
         </div>
@@ -154,37 +148,37 @@
 
         <!-- Bottom-Centered Clickable Button -->
         <a
-          href="#"
+          href="/browse"
           class="absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-[#324A16] text-white h-[60px] w-[200px] flex items-center justify-center rounded-[40px] shadow-lg hover:bg-[#3d5d1c] transition text-lg font-medium"
         >
           Browse Books
         </a>
       </div>
       <!-- Search Bar Centered Below Button -->
-      <div class="absolute -bottom-7 left-1/2 transform -translate-x-1/2">
+      <!-- <div class="absolute -bottom-7 left-1/2 transform -translate-x-1/2">
         <div
           class="flex items-center rounded-full border bg-white px-4 py-2 shadow-md w-[780px]"
-        >
-          <!-- Menu Icon -->
-          <div class="text-green-900 mr-4">
+        > -->
+      <!-- Menu Icon -->
+      <!-- <div class="text-green-900 mr-4">
             <i class="fa-solid fa-bars text-black text-xl"></i>
-          </div>
+          </div> -->
 
-          <!-- Search Input -->
-          <input
+      <!-- Search Input -->
+      <!-- <input
             type="text"
             placeholder="Search Books"
             class="flex-grow bg-transparent text-gray-600 placeholder-gray-400 outline-none"
-          />
+          /> -->
 
-          <!-- Search Button -->
-          <button
+      <!-- Search Button -->
+      <!-- <button
             class="ml-4 bg-green-900 rounded-full w-10 h-10 flex items-center justify-center"
           >
             <i class="fa-solid fa-magnifying-glass text-white text-base"></i>
           </button>
         </div>
-      </div>
+      </div> -->
       <!-- Popular-Search -->
       <!-- <section class="flex justify-center gap-7 mt-[70px]">
         <div>
@@ -289,7 +283,7 @@
               alt="book3"
             />
             <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
-              >Slice of Life Books</span
+              >Horror</span
             >
           </div>
           <!-- book-4 -->
@@ -311,7 +305,7 @@
               alt="book5"
             />
             <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
-              >Biography</span
+              >Psychology</span
             >
           </div>
           <!-- book-6 -->
@@ -322,7 +316,7 @@
               alt="book6"
             />
             <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
-              >Fantasy</span
+              >Children</span
             >
           </div>
           <!-- book-7 -->
@@ -332,9 +326,7 @@
               src="assets/landingbook-2.png"
               alt="book7"
             />
-            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]"
-              >Adventure</span
-            >
+            <span class="mt-6 text-[20px] font-[600] text-[#1B1F13]">All</span>
           </div>
         </div>
 
@@ -360,67 +352,25 @@
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ml-[120px] mb-[60px]"
       >
+        <% topBooks.forEach(book => { %>
         <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
+          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[7rem]"
           style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
         >
           <img
             class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-1.png"
-            alt="Simple way of piece life book cover"
+            src="<%= book.imageUrls || 'assets/default-book.png' %>"
+            alt="<%= book.bookName%>"
           />
           <span class="text-black text-[16px] font-medium"
-            >Simple way of piece life</span
+            ><%= book.bookName %></span
           >
-          <span class="text-[#BC6C25] text-[14px]">Armor Ramsey</span>
-          <span class="text-[#324A16] font-semibold">Rs 250</span>
+          <span class="text-[#BC6C25] text-[14px]"><%= book.author %></span>
+          <span class="text-[#324A16] font-semibold">Rs <%= book.price %></span>
         </div>
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-2.png"
-            alt="Simple way of piece life book cover"
-          />
-          <span class="text-black text-[16px] font-medium"
-            >Great travel at desert</span
-          >
-          <span class="text-[#BC6C25] text-[14px]">Sanchit Howdy</span>
-          <span class="text-[#324A16] font-semibold">Rs 430</span>
-        </div>
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-3.png"
-            alt="Simple way of piece life book cover"
-          />
-          <span class="text-black text-[16px] font-medium"
-            >The lady beauty Scarlett</span
-          >
-          <span class="text-[#BC6C25] text-[14px]">Arthur Doyle</span>
-          <span class="text-[#324A16] font-semibold">Rs 350</span>
-        </div>
-        <div
-          class="flex flex-col items-center space-y-1 bg-white h-[250px] w-[190px] rounded-md mb-[5rem]"
-          style="box-shadow: 0 0 10px rgba(236, 118, 16, 0.5)"
-        >
-          <img
-            class="h-[260px] w-[190px] object-cover"
-            src="assets/fav-2.png"
-            alt="Simple way of piece life book cover"
-          />
-          <span class="text-black text-[16px] font-medium"
-            >Simple way of piece life</span
-          >
-          <span class="text-[#BC6C25] text-[14px]">Armor Ramsey</span>
-          <span class="text-[#324A16] font-semibold">Rs 250</span>
-        </div>
+        <% }) %>
       </div>
+
       <!-- <div class="flex justify-center">
         <a
           class="bg-[#324A16] p-4 rounded-3xl px-[30px] hover:bg-[#264a16]"
