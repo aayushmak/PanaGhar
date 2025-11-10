@@ -72,7 +72,7 @@ router.post("/upload", (req, res) => {
       
       console.log("✅ Book uploaded successfully:", newBook);
       
-      // Redirect to manage books or show success
+      // Redirect to manage books 
       res.redirect("/manageBook");
       
     } catch (error) {
